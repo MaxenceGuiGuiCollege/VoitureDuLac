@@ -1,0 +1,17 @@
+
+p#erreur{
+    color: red;
+}
+
+/* CONNEXION */
+form[name=formConnexion] p{
+    margin-bottom: 0;
+}
+form[name=formConnexion] input[type=text],
+form[name=formConnexion] input[type=password]{
+    margin-bottom: 20px;
+    width: 100%;
+}
+form[name=formConnexion] p#reserve{
+    margin-top: 2em;
+}
