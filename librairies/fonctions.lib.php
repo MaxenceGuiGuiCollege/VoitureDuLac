@@ -56,12 +56,12 @@ function AfficherVoitures($bd){
         print(" <div class='voiture'>
                     <img src='images/".$ligne->idVoiture.".jpg' alt='Image de ".$ligne->nomVoiture."'>
                     <div>
-                        <p><strong>Nom : </strong>".$ligne->nomVoiture."</p>
-                        <p><strong>Marque : </strong>".$ligne->marque."</p>
-                        <p><strong>Année : </strong>".$ligne->annee."</p>
-                        <p><strong>Kilometrage : </strong>".$ligne->km." km</p>
+                        <h4>".$ligne->nomVoiture."</h4>
+                        <p>Marque : ".$ligne->marque."</p>
+                        <p>Année : ".$ligne->annee."</p>
+                        <p>".$ligne->description_fr."</p>
+                        <a href='reservation.php'>Réserver cette voiture</a>
                     </div>
-                    <p><strong>Description : </strong>".$ligne->description_fr."</p>
                 </div>");
     }
 

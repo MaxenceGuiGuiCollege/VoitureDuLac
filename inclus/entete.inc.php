@@ -56,6 +56,7 @@
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item active"><a class="nav-link" href="#">
                   <!-- <?php echo $data['menuReservation'] ?> -->
+                  Réservation
                 </a></li>
               <li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>
               <li class="nav-item"><a class="nav-link" href="#">[Français</a></li>
