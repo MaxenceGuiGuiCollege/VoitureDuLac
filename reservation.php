@@ -8,7 +8,6 @@ $selection = null;
 // VERIFICATION SELECTION
 if(isset($_GET["select"])){
     $selection = $_GET["select"];
-    pp($selection);
 }
 include("inclus/entete.inc.php");
 ?>

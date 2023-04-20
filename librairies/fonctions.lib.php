@@ -60,7 +60,7 @@ function AfficherVoitures($bd){
                         <p>Marque : ".$ligne->marque."</p>
                         <p>Année : ".$ligne->annee."</p>
                         <p>".$ligne->description_fr."</p>
-                        <a href='reservation.php#select=".$ligne->idVoiture."'>Réserver cette voiture</a>
+                        <a href='reservation.php?select=".$ligne->idVoiture."'>Réserver cette voiture</a>
                     </div>
                 </div>");
     }
