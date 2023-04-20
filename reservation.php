@@ -3,6 +3,13 @@ session_start();
 include("librairies/fonctions.lib.php");
 $bd = null;
 ConnecterBd($bd);
+// INITIALISER LA SELECTION À NULL
+$selection = null;
+// VERIFICATION SELECTION
+if(isset($_GET["select"])){
+    $selection = $_GET["select"];
+    pp($selection);
+}
 include("inclus/entete.inc.php");
 ?>
     <!-- RESERVATION -->
@@ -28,7 +35,7 @@ include("inclus/entete.inc.php");
                     print("Aucune voitures.");
                 }
                 else{
-                    AfficherRadioVoitures($bd);
+                    AfficherRadioVoitures($bd, $selection);
                 }
                 ?>
 <!--        TODO: Afficher les radio btn avec PHP-->

@@ -60,7 +60,7 @@ function AfficherVoitures($bd){
                         <p>Marque : ".$ligne->marque."</p>
                         <p>Année : ".$ligne->annee."</p>
                         <p>".$ligne->description_fr."</p>
-                        <a href='reservation.php'>Réserver cette voiture</a>
+                        <a href='reservation.php#select=".$ligne->idVoiture."'>Réserver cette voiture</a>
                     </div>
                 </div>");
     }
@@ -68,7 +68,7 @@ function AfficherVoitures($bd){
     $resultatVoitures->closeCursor( );
 }
 // Fonction qui permet d'afficher la liste des radio boutons des voitures pour la page de réservation.
-function AfficherRadioVoitures($bd){
+function AfficherRadioVoitures($bd, $selection){
 
     $reqVoitures = "SELECT * FROM voiture";
     $resultatVoitures = $bd->query($reqVoitures);
@@ -76,7 +76,14 @@ function AfficherRadioVoitures($bd){
 
     while($ligne = $resultatVoitures->fetch( )){
 
-        print(" <input type='radio' name='voitures' id='radio".$ligne->nomVoiture."'>
+        if($ligne->idVoiture == $selection){
+            $checked = "checked";
+        }
+        else{
+            $checked = "";
+        }
+
+        print(" <input type='radio' name='voitures' id='radio".$ligne->nomVoiture."' $checked>
                 <label for='radio".$ligne->nomVoiture."'>".$ligne->nomVoiture."</label>");
     }
 
