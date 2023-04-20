@@ -124,7 +124,7 @@ class voitureClass{
 
         $this->setIdVoiture($bd->lastInsertId());
 
-
+        $this->ajouterImage();
     }
     public function modifierVoitureBD($bd){
 
@@ -144,8 +144,7 @@ class voitureClass{
                    annee = :a,
                    km = :k,
                    description_fr = :dFr,
-                   description_en = :dEn
-               WHERE idVoiture = :i;");
+                   description_en = :dEn WHERE idVoiture = :i;");
         $reqM->execute($data);
 
         $this->modifierImage();
