@@ -1,25 +1,23 @@
 <?php
+include("librairies/fonctions.lib.php");
+//DEFINIR LA LANGUE
+if(isset($_GET['lang']))
+    $lang = $_GET['lang'];
+else if(isset($_COOKIE['lang']))
+    $lang = $_COOKIE['lang'];
+else
+    $lang = "fr";
+$json = obtenirJson($lang);
 include("inclus/entete.inc.php");
 ?>
 <!-- SERVICES -->
-<h2 class="mb-4">Nos Services</h2>
-<h6>Location de service</h6>
-<p>
-    Que ce soit pour un mariage, un bal de finissant
-    ou tout autre occasion, nos voitures font parti
-    des plus belles de la région.
-</p>
-<h6 class="mt-5">Location de chauffeur</h6>
-<p>
-    Le service de chauffer vous permet de vous déplacer
-    un peu partout dans la région sans vous soucier de la route.
-</p>
-<h6 class="mt-5">Photo</h6>
-<p>
-    Pour une occasion spécial ou pour impressionner
-    vos amis, un photographe professionnel peut vous
-    immortaliser avec la voiture de votre choix.
-</p>
+<h2 class="mb-4"><?php echo $json['services_title'] ?></h2>
+<h6><?php echo $json['services_services'] ?></h6>
+<p><?php echo $json['services_services_text'] ?></p>
+<h6 class="mt-5"><?php echo $json['services_drivers'] ?></h6>
+<p><?php echo $json['services_drivers_text'] ?></p>
+<h6 class="mt-5"><?php echo $json['services_photo'] ?></h6>
+<p><?php echo $json['services_photo_text'] ?></p>
 <?php
 include("inclus/piedPage.inc.php");
 ?>

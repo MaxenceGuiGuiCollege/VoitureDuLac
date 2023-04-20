@@ -18,5 +18,17 @@
   "cars_title":"Cars",
   "cars_brand":"Brand",
   "cars_year":"Year",
-  "cars_book":"Book this car"
+  "cars_book":"Book this car",
+
+  "services_title":"Nos Services",
+  "services_services":"Que ce soit pour un mariage, un bal de finissant ou tout autre occasion, nos voitures font parti des plus belles de la région.",
+  "services_services_text":"Marque",
+  "services_drivers":"Location de chauffeur",
+  "services_drivers_text":"Le service de chauffer vous permet de vous déplacer un peu partout dans la région sans vous soucier de la route.",
+  "services_photo":"Photo",
+  "services_photo_text":"Pour une occasion spécial ou pour impressionner vos amis, un photographe professionnel peut vous immortaliser avec la voiture de votre choix.",
+
+  "contact_title":"Contact us",
+  "contact_phone":"Phone",
+  "contact_email":"Email"
 }
