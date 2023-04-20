@@ -1,15 +1,13 @@
 <?php
-// DEMARRER LES SESSIONS
 session_start();
-// INCLURE LES FONCTIONS PHP
 include("librairies/fonctions.lib.php");
-// CONNECTER BD
-$bd;
+$bd = null;
 ConnecterBd($bd);
 // INITIALISER LA CONNEXION À FAUX
 $isConnected = false;
-// VERIFICATION ACTION
+// VERIFICATION SI IL Y A UNE ACTION
 if(isset($_GET["action"])){
+    // VERIFICATION ACTION CONNECTER
     if($_GET["action"] == "connecter"){
         $message = ConnecterUsager($bd, $_POST['courriel'], $_POST['mdp']);
 
@@ -27,7 +25,6 @@ if($isConnected){
 else{
     $_SESSION['isConnected'] = false;
 }
-// INCLURE L'ENTETE
 include("inclus/entete.inc.php");
 ?>
 <!-- CONNEXION -->
@@ -47,8 +44,6 @@ include("inclus/entete.inc.php");
     </fieldset>
 </form>
 <?php
-// AFFICHER LE MESSAGE ERREUR
 if(!empty($message)) echo $message;
-// INCLURE LE PIED DE PAGE
 include("inclus/piedPage.inc.php");
 ?>

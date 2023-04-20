@@ -1,4 +1,3 @@
-
 <?php
 include("inclus/entete.inc.php");
 ?>

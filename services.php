@@ -20,8 +20,6 @@ include("inclus/entete.inc.php");
     vos amis, un photographe professionnel peut vous
     immortaliser avec la voiture de votre choix.
 </p>
-
-
 <?php
 include("inclus/piedPage.inc.php");
 ?>
