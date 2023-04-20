@@ -8,6 +8,7 @@ else if(isset($_COOKIE['lang']))
     $lang = $_COOKIE['lang'];
 else
     $lang = "fr";
+setcookie('lang', $lang, time()+365*24*60*60);
 $json = obtenirJson($lang);
 $bd = null;
 ConnecterBd($bd);

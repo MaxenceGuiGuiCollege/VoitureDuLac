@@ -27,10 +27,6 @@
   "services_photos":"Photo",
   "services_photos_text":"For a special occasion or to impress your friends, a professional photographer can immortalize you with the car of your choice.",
 
-  "contact_title":"Contact us",
-  "contact_phone":"Phone",
-  "contact_email":"Email",
-
   "prices_title":"Prices",
   "prices_service":"Service",
   "prices_price":"Price",
@@ -45,5 +41,9 @@
   "prices_maxtime":"(maximum 8 hours/day)",
   "prices_content_photoshoot":"(Photo session including 5 digital photos and a paper photo)",
   "prices_allphotos":"All digital photos",
-  "prices_paperphoto":"A paper photo"
+  "prices_paperphoto":"A paper photo",
+
+  "contact_title":"Contact us",
+  "contact_phone":"Phone",
+  "contact_email":"Email"
 }

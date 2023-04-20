@@ -27,10 +27,6 @@
   "services_photos":"Photo",
   "services_photos_text":"Pour une occasion spécial ou pour impressionner vos amis, un photographe professionnel peut vous immortaliser avec la voiture de votre choix.",
 
-  "contact_title":"Nous Rejoindre",
-  "contact_phone":"Téléphone",
-  "contact_email":"Courriel",
-
   "prices_title":"Nos Tarifs",
   "prices_service":"Service",
   "prices_price":"Prix",
@@ -45,5 +41,10 @@
   "prices_maxtime":"(maximum 8 heures/jour)",
   "prices_content_photoshoot":"(Séance de photo incluant 5 photos numérique et une photo papier)",
   "prices_allphotos":"Toutes les photos numérique",
-  "prices_paperphoto":"Une photo papier"
+  "prices_paperphoto":"Une photo papier",
+
+  "contact_title":"Nous Rejoindre",
+  "contact_phone":"Téléphone",
+  "contact_email":"Courriel"
+
 }
