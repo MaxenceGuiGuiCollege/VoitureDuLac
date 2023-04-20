@@ -13,5 +13,10 @@
   "index_title":"Voiture du Lac",
   "index_text_1":"Would you like to take a ride in a special car? Whether it's for a wedding, a prom or any other occasion, we have what you need in our beautiful region of Saguenay Lac-St-Jean. Come visit us. Several cars are at your disposal.",
   "index_text_2":"For more information, do not hesitate to contact us. Also, if you liked your experience with us, tell your friends and on your next visit you will be entitled to a discount.",
-  "index_text_3":"Welcome to our house !"
+  "index_text_3":"Welcome to our house !",
+
+  "cars_title":"Cars",
+  "cars_brand":"Brand",
+  "cars_year":"Year",
+  "cars_book":"Book this car"
 }

@@ -13,5 +13,10 @@
   "index_title":"Voiture du Lac",
   "index_text_1":"Vous aimeriez faire une balade dans une voiture spéciale ? Que ce soit pour un mariage, un bal de finissant ou tout autre occasion, nous avons ce qu'il vous faut et ce, dans notre belle région du Saguenay Lac-St-Jean. Venez faire une visite chez nous. Plusieurs voitures sont à votre disposition.",
   "index_text_2":"Pour de plus amples informations, n'hésitez pas à communiquer avec nous. De plus, si vous avez aimé votre expérience avec nous, parlez-en à vos amis et lors de votre prochaine visite, vous aurez droit à un rabais.",
-  "index_text_3":"Bienvenue chez nous !"
+  "index_text_3":"Bienvenue chez nous !",
+
+  "cars_title":"Nos Voitures",
+  "cars_brand":"Marque",
+  "cars_year":"Année",
+  "cars_book":"Réserver cette voiture"
 }

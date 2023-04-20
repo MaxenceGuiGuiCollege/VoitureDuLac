@@ -1,6 +1,14 @@
 <?php
 session_start();
 include("librairies/fonctions.lib.php");
+//DEFINIR LA LANGUE
+if(isset($_GET['lang']))
+    $lang = $_GET['lang'];
+else if(isset($_COOKIE['lang']))
+    $lang = $_COOKIE['lang'];
+else
+    $lang = "fr";
+$json = obtenirJson($lang);
 $bd = null;
 ConnecterBd($bd);
 //VERIFICATION CONNEXION
@@ -15,14 +23,14 @@ else{
 }
 ?>
 <!-- VOITURES -->
-<h2 class="mb-4">Nos Voitures</h2>
+<h2 class="mb-4"><?php echo $json['cars_title'] ?></h2>
 <?php
 // VERIFICATION NOMBRE DE VOITURES
 if(CompterVoitures($bd) == 0){
     print("Aucune voitures.");
 }
 else{
-    AfficherVoitures($bd);
+    AfficherVoitures($bd, $lang);
 }
 include("inclus/piedPage.inc.php");
 ?>

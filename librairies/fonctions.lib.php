@@ -45,7 +45,10 @@ function CompterVoitures($bd){
     return $reqCount->fetch()[0];
 }
 // Fonction qui permet d'afficher la liste des voitures.
-function AfficherVoitures($bd){
+function AfficherVoitures($bd, $lang){
+
+    $json = obtenirJson($lang);
+    $nameDescription = "description_".$lang;
 
     $reqVoitures = "SELECT * FROM voiture";
     $resultatVoitures = $bd->query($reqVoitures);
@@ -57,10 +60,10 @@ function AfficherVoitures($bd){
                     <img src='images/".$ligne->idVoiture.".jpg' alt='Image de ".$ligne->nomVoiture."'>
                     <div>
                         <h4>".$ligne->nomVoiture."</h4>
-                        <p>Marque : ".$ligne->marque."</p>
-                        <p>Année : ".$ligne->annee."</p>
-                        <p>".$ligne->description_fr."</p>
-                        <a href='reservation.php?select=".$ligne->idVoiture."'>Réserver cette voiture</a>
+                        <p>".$json['cars_brand']." : ".$ligne->marque."</p>
+                        <p>".$json['cars_year']." : ".$ligne->annee."</p>
+                        <p>".$ligne->$nameDescription."</p>
+                        <a href='reservation.php?select=".$ligne->idVoiture."'>".$json['cars_book']."</a>
                     </div>
                 </div>");
     }

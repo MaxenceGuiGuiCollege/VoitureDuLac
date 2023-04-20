@@ -1,9 +1,15 @@
 <?php
 session_start();
-setcookie('lang', 'fr', time()+365*24*60*60);
 include("librairies/fonctions.lib.php");
-//$json = obtenirJson($_COOKIE["lang"]);
-$json = obtenirJson("en");
+//DEFINIR LA LANGUE
+if(isset($_GET['lang']))
+  $lang = $_GET['lang'];
+else if(isset($_COOKIE['lang']))
+  $lang = $_COOKIE['lang'];
+else
+  $lang = "fr";
+setcookie('lang', $lang, time()+365*24*60*60);
+$json = obtenirJson($lang);
 //VERIFICATION CONNEXION
 if(isset($_SESSION['isConnected'])){
   if($_SESSION['isConnected'])
