@@ -7,8 +7,8 @@ include("inclus/entete.inc.php");
         <fieldset>
             <p>Date début</p>
             <p>Date fin</p>
-            <input type="date" name="dateDebut">
-            <input type="date" name="dateFin">
+            <input type="date" name="dateDebut" id="dateDebut" content="getDateToday();">
+            <input type="date" name="dateFin" id="dateFin"">
         </fieldset>
         <fieldset>
             <p>Courriel du client</p>
@@ -19,7 +19,7 @@ include("inclus/entete.inc.php");
             <p>Nos voiture</p>
             <div>
 <!--        TODO: Afficher les radio btn avec PHP-->
-                <input type="radio" name="voitures" id="radioOrange">
+                <input type="radio" name="voitures" id="radioOrange" checked>
                 <label for="radioOrange">Orange</label>
                 <input type="radio" name="voitures" id="radioBleu">
                 <label for="radioBleu">Bleu</label>
