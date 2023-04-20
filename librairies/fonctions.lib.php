@@ -65,9 +65,20 @@ function AfficherVoitures($bd){
                 </div>");
     }
 
-//    print(" <div class='ps'>
-//                <p>".$json['precision']."</p>
-//            </div>");
+    $resultatVoitures->closeCursor( );
+}
+// Fonction qui permet d'afficher la liste des radio boutons des voitures pour la page de réservation.
+function AfficherRadioVoitures($bd){
+
+    $reqVoitures = "SELECT * FROM voiture";
+    $resultatVoitures = $bd->query($reqVoitures);
+    $resultatVoitures->setFetchMode(PDO::FETCH_OBJ);
+
+    while($ligne = $resultatVoitures->fetch( )){
+
+        print(" <input type='radio' name='voitures' id='radio".$ligne->nomVoiture."'>
+                <label for='radio".$ligne->nomVoiture."'>".$ligne->nomVoiture."</label>");
+    }
 
     $resultatVoitures->closeCursor( );
 }

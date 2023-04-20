@@ -1,4 +1,8 @@
 <?php
+session_start();
+include("librairies/fonctions.lib.php");
+$bd = null;
+ConnecterBd($bd);
 include("inclus/entete.inc.php");
 ?>
     <!-- RESERVATION -->
@@ -18,17 +22,17 @@ include("inclus/entete.inc.php");
         <fieldset>
             <p>Nos voiture</p>
             <div>
+                <?php
+                // VERIFICATION NOMBRE DE VOITURES
+                if(CompterVoitures($bd) == 0){
+                    print("Aucune voitures.");
+                }
+                else{
+                    AfficherRadioVoitures($bd);
+                }
+                ?>
 <!--        TODO: Afficher les radio btn avec PHP-->
-                <input type="radio" name="voitures" id="radioOrange" checked>
-                <label for="radioOrange">Orange</label>
-                <input type="radio" name="voitures" id="radioBleu">
-                <label for="radioBleu">Bleu</label>
-                <input type="radio" name="voitures" id="radioRouge">
-                <label for="radioRouge">Rouge</label>
-                <input type="radio" name="voitures" id="radioBlanc">
-                <label for="radioBlanc">Blanc</label>
-                <input type="radio" name="voitures" id="radioRose">
-                <label for="radioRose">Rose</label>
+
             </div>
         </fieldset>
 
