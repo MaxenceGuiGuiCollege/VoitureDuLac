@@ -42,3 +42,37 @@ div.voiture div+p{
     margin-top: 1em;
     grid-column: span 2;
 }
+
+/* RESERVATION */
+form[name=formReserv] p{
+    margin-bottom: 0;
+}
+form[name=formReserv] fieldset{
+    margin-bottom: 1.5em;
+}
+form[name=formReserv] fieldset:first-of-type{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1em;
+}
+form[name=formReserv] fieldset:nth-of-type(3){
+    display: grid;
+    grid-template-columns: max-content max-content;
+
+    column-gap: 10%;
+}
+form[name=formReserv] fieldset:nth-of-type(3) div{
+    display: grid;
+    grid-template-columns: max-content max-content;
+
+    column-gap: 0.5em;
+}
+form[name=formReserv] fieldset:nth-of-type(3) div label{
+    margin:0;
+}
+form[name=formReserv] input[type=text],
+form[name=formReserv] input[type=date],
+form[name=formReserv] input[type=email]{
+    margin-top: 0.5em;
+    width: 100%;
+}

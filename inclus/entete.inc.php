@@ -54,7 +54,7 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item active"><a class="nav-link" href="#">
+              <li class="nav-item active"><a class="nav-link" href="reservation.php">
                   <!-- <?php echo $data['menuReservation'] ?> -->
                   Réservation
                 </a></li>
