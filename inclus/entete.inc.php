@@ -20,11 +20,11 @@
       <div class="p-4 pt-5">
         <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
         <ul class="list-unstyled components mb-5">
-          <li class="active"><a href="index.php">Accueil</a></li>
-          <li><a href="voitures.php">Nos Voitures</a></li>
-          <li><a href="services.php">Nos Services</a></li>
-          <li><a href="tarifs.php">Nos Tarifs</a></li>
-          <li><a href="rejoindre.php">Nous Rejoindre</a></li>
+          <li class="active"><a href="index.php"><?php echo $json['header_home'] ?></a></li>
+          <li><a href="voitures.php"><?php echo $json['header_cars'] ?></a></li>
+          <li><a href="services.php"><?php echo $json['header_services'] ?></a></li>
+          <li><a href="tarifs.php"><?php echo $json['header_prices'] ?></a></li>
+          <li><a href="rejoindre.php"><?php echo $json['header_contact'] ?></a></li>
         </ul>
         <br><br><br>
         <div class="footer">
@@ -56,12 +56,11 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item active"><a class="nav-link" href="reservation.php">
-                  <!-- <?php echo $data['menuReservation'] ?> -->
-                  Réservation
+                  <?php echo $json['header_book'] ?>
                 </a></li>
-              <li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">[Français</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Anglais]</a></li>
+              <li class="nav-item"><a class="nav-link" href="connexion.php"><?php echo $json['header_login'] ?></a></li>
+              <li class="nav-item"><a class="nav-link" href="?lang=fr"><?php echo $json['header_fr_btn'] ?></a></li>
+              <li class="nav-item"><a class="nav-link" href="?lang=en"><?php echo $json['header_en_btn'] ?></a></li>
             </ul>
           </div>
         </div>

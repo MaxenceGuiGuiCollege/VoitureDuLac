@@ -89,4 +89,10 @@ function AfficherRadioVoitures($bd, $selection){
 
     $resultatVoitures->closeCursor( );
 }
+// Fonction qui permet d'obtenir le json.
+function obtenirJson($lang){
+    $contenu_json = file_get_contents('lang/'.$lang.'.json');
+
+    return json_decode($contenu_json, true);
+}
 ?>
