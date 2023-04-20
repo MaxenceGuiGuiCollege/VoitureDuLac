@@ -4,7 +4,6 @@
   "header_services":"Nos Services",
   "header_prices":"Nos Tarifs",
   "header_contact":"Nous Rejoindre",
-
   "header_book":"Réservation",
   "header_login":"Connexion",
   "header_fr_btn":"[Français",
@@ -21,14 +20,30 @@
   "cars_book":"Réserver cette voiture",
 
   "services_title":"Nos Services",
-  "services_services":"Que ce soit pour un mariage, un bal de finissant ou tout autre occasion, nos voitures font parti des plus belles de la région.",
-  "services_services_text":"Marque",
+  "services_cars":"Location de voiture",
+  "services_cars_text":"Que ce soit pour un mariage, un bal de finissant ou tout autre occasion, nos voitures font parti des plus belles de la région.",
   "services_drivers":"Location de chauffeur",
-  "services_drivers_text":"Le service de chauffer vous permet de vous déplacer un peu partout dans la région sans vous soucier de la route.",
-  "services_photo":"Photo",
-  "services_photo_text":"Pour une occasion spécial ou pour impressionner vos amis, un photographe professionnel peut vous immortaliser avec la voiture de votre choix.",
+  "services_drivers_text":"Le service de chauffeur vous permet de vous déplacer un peu partout dans la région sans vous soucier de la route.",
+  "services_photos":"Photo",
+  "services_photos_text":"Pour une occasion spécial ou pour impressionner vos amis, un photographe professionnel peut vous immortaliser avec la voiture de votre choix.",
 
   "contact_title":"Nous Rejoindre",
   "contact_phone":"Téléphone",
-  "contact_email":"Courriel"
+  "contact_email":"Courriel",
+
+  "prices_title":"Nos Tarifs",
+  "prices_service":"Service",
+  "prices_price":"Prix",
+  "prices_car":"Voiture",
+  "prices_driver":"Chauffeur",
+  "prices_photo":"Photo",
+  "prices_week":"semaine",
+  "prices_day":"jour",
+  "prices_hour":"heure",
+  "prices_if":"si",
+  "prices_insurance":"Assurance (si besoin)",
+  "prices_maxtime":"(maximum 8 heures/jour)",
+  "prices_content_photoshoot":"(Séance de photo incluant 5 photos numérique et une photo papier)",
+  "prices_allphotos":"Toutes les photos numérique",
+  "prices_paperphoto":"Une photo papier"
 }
