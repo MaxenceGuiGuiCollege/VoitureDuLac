@@ -16,6 +16,10 @@ if(isset($_GET["action"])){
         else
             $isConnected = false;
     }
+    // VERIFICATION ACTION DECONNECTER
+    else if($_GET["action"] == "deconnecter") {
+        $isConnected = false;
+    }
 }
 // VERIFICATION CONNEXION
 if($isConnected){

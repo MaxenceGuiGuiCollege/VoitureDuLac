@@ -3,7 +3,16 @@ session_start();
 include("librairies/fonctions.lib.php");
 $bd = null;
 ConnecterBd($bd);
-include("inclus/entete.inc.php");
+//VERIFICATION CONNEXION
+if(isset($_SESSION['isConnected'])){
+    if($_SESSION['isConnected'])
+        include("inclus/enteteAdmin.inc.php");
+    else
+        include("inclus/entete.inc.php");
+}
+else{
+    include("inclus/entete.inc.php");
+}
 ?>
 <!-- VOITURES -->
 <h2 class="mb-4">Nos Voitures</h2>

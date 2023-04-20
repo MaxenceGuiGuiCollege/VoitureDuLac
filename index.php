@@ -1,5 +1,16 @@
 <?php
-include("inclus/entete.inc.php");
+session_start();
+include("librairies/fonctions.lib.php");
+//VERIFICATION CONNEXION
+if(isset($_SESSION['isConnected'])){
+  if($_SESSION['isConnected'])
+    include("inclus/enteteAdmin.inc.php");
+  else
+    include("inclus/entete.inc.php");
+}
+else{
+  include("inclus/entete.inc.php");
+}
 ?>
 <!-- INDEX -->
 <h2 class="mb-4">Voiture du Lac</h2>
