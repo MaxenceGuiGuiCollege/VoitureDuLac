@@ -86,7 +86,7 @@ function AfficherRadioVoitures($bd, $selection){
             $checked = "";
         }
 
-        print(" <input type='radio' name='voitures' id='radio".$ligne->nomVoiture."' $checked>
+        print(" <input type='radio' name='voitures' id='radio".$ligne->nomVoiture."' value='".$ligne->idVoiture."' $checked required>
                 <label for='radio".$ligne->nomVoiture."'>".$ligne->nomVoiture."</label>");
     }
 
@@ -97,5 +97,33 @@ function obtenirJson($lang){
     $contenu_json = file_get_contents('lang/'.$lang.'.json');
 
     return json_decode($contenu_json, true);
+}
+// Fonction qui vérifie si la reservation séléctionnée par le client est possible.
+function VerifierReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture){
+
+    $reqReserv = "SELECT * FROM reservation
+                            WHERE noVoiture = '$idVoiture'
+                                AND dateDebut <= '$dateDebut'
+                                AND dateFin > '$dateDebut';";
+    $resReserv = $bd->query($reqReserv);
+    $nbReserv = $resReserv->rowCount();
+    if($nbReserv != 0){
+        return "<script>document.getElementById('erreur').textContent =
+            'La voiture choisie n\'est pas disponible dans les dates séléctionnées.';</script>";
+    }
+
+    $reqClient = "SELECT * FROM client WHERE courriel = '$courriel'";
+    $resClient = $bd->query($reqClient);
+    $nbClient = $resClient->rowCount();
+    if($nbClient == 0){
+        return "<script>document.getElementById('erreur').textContent =
+            'Le courriel n\'est pas inscrit dans la liste de nos client.';</script>";
+    }
+
+    return null;
+}
+// Fonction qui ajoute la reservation séléctionnée par le client.
+function AjouterReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture){
+    print "oui";
 }
 ?>

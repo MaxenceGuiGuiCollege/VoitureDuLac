@@ -2,7 +2,7 @@
 // DATE RESERVATION
 function getDateToday(){
     const y = new Date().getFullYear();
-    const m = new Date().getMonth();
+    const m = new Date().getMonth() + 1;
     const d = new Date().getDate();
     var zeroM = "";
     var zeroD = "";

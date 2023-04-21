@@ -19,20 +19,30 @@ $selection = null;
 if(isset($_GET["select"])){
     $selection = $_GET["select"];
 }
+// VERIFICATION SI IL Y A UNE ACTION
+if(isset($_GET["action"])){
+    // VERIFICATION ACTION RESERVER
+    if($_GET["action"] == "reserver"){
+        $message = VerifierReservation($bd, $_POST['dateDebut'], $_POST['dateFin'], $_POST['courriel'], $_POST['voitures']);
+
+        if($message == null)
+            AjouterReservation($bd, $_POST['dateDebut'], $_POST['dateFin'], $_POST['courriel'], $_POST['voitures']);
+    }
+}
 include("inclus/entete.inc.php");
 ?>
     <!-- RESERVATION -->
     <h2 class="mb-4"><?php echo $json['booking_title'] ?></h2>
-    <form action="3" name="formReserv" method="post">
+    <form action="reservation.php?action=reserver" name="formReserv" method="post">
         <fieldset>
             <p><?php echo $json['booking_date_start'] ?></p>
             <p><?php echo $json['booking_date_end'] ?></p>
-            <input type="date" name="dateDebut" id="dateDebut">
-            <input type="date" name="dateFin" id="dateFin"">
+            <input type="date" name="dateDebut" id="dateDebut" required>
+            <input type="date" name="dateFin" id="dateFin"" required>
         </fieldset>
         <fieldset>
             <p><?php echo $json['booking_email'] ?></p>
-            <input type="email" name="courriel">
+            <input type="email" name="courriel" required>
         </fieldset>
 
         <fieldset>
@@ -66,5 +76,6 @@ include("inclus/entete.inc.php");
         </fieldset>
     </form>
 <?php
+if(!empty($message)) echo $message;
 include("inclus/piedPage.inc.php");
 ?>
