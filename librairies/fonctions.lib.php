@@ -99,7 +99,7 @@ function obtenirJson($lang){
     return json_decode($contenu_json, true);
 }
 // Fonction qui vérifie si la reservation séléctionnée par le client est possible.
-function VerifierReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture){
+function VerifierReservation($bd, $dateDebut, $courriel, $idVoiture){
 
     $reqReserv = "SELECT * FROM reservation
                             WHERE noVoiture = '$idVoiture'
@@ -124,6 +124,15 @@ function VerifierReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture){
 }
 // Fonction qui ajoute la reservation séléctionnée par le client.
 function AjouterReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture){
-    print "oui";
+
+    $reqClient = "SELECT idClient FROM client WHERE courriel = '$courriel'";
+    $resClient = $bd->query($reqClient);
+    $resClient->setFetchMode(PDO::FETCH_OBJ);
+
+    $idClient = $resClient->fetchAll()[0]->idClient;
+
+    $reqInsert = "INSERT INTO reservation(noVoiture, noClient, dateDebut, dateFin, status)
+                    VALUES ($idVoiture, $idClient, '$dateDebut', '$dateFin', 0);";
+    $bd->query($reqInsert);
 }
 ?>

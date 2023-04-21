@@ -23,7 +23,7 @@ if(isset($_GET["select"])){
 if(isset($_GET["action"])){
     // VERIFICATION ACTION RESERVER
     if($_GET["action"] == "reserver"){
-        $message = VerifierReservation($bd, $_POST['dateDebut'], $_POST['dateFin'], $_POST['courriel'], $_POST['voitures']);
+        $message = VerifierReservation($bd, $_POST['dateDebut'], $_POST['courriel'], $_POST['voitures']);
 
         if($message == null)
             AjouterReservation($bd, $_POST['dateDebut'], $_POST['dateFin'], $_POST['courriel'], $_POST['voitures']);
