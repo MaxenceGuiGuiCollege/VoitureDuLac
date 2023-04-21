@@ -27,6 +27,7 @@ if(isset($_GET["action"])){
 
         if($message == null)
             AjouterReservation($bd, $_POST['dateDebut'], $_POST['dateFin'], $_POST['courriel'], $_POST['voitures']);
+
     }
 }
 include("inclus/entete.inc.php");

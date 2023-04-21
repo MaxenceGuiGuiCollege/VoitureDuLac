@@ -134,5 +134,7 @@ function AjouterReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture){
     $reqInsert = "INSERT INTO reservation(noVoiture, noClient, dateDebut, dateFin, status)
                     VALUES ($idVoiture, $idClient, '$dateDebut', '$dateFin', 0);";
     $bd->query($reqInsert);
+
+    echo "<script>alert('La reservation à bien été reçue. Nous communiquerons avec vous pour confirmer la suite.');</script>";
 }
 ?>
