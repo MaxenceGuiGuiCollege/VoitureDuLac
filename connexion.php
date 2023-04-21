@@ -19,7 +19,7 @@ $isConnected = false;
 if(isset($_GET["action"])){
     // VERIFICATION ACTION CONNECTER
     if($_GET["action"] == "connecter"){
-        $message = ConnecterUsager($bd, $_POST['courriel'], $_POST['mdp']);
+        $message = ConnecterUsager($bd, $_POST['courriel'], $_POST['mdp'], $lang);
 
         if(!isset($message))
             $isConnected = true;

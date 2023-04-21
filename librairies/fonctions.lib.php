@@ -21,12 +21,15 @@ function ConnecterBd(&$bd){
     }
 }
 // Fonction qui permet de connecter un usager.
-function ConnecterUsager($bd, $courriel, $mdp){
+function ConnecterUsager($bd, $courriel, $mdp, $lang){
+
+    $json = obtenirJson($lang);
+
     $req = $bd->prepare("SELECT * FROM usager WHERE courriel = ?;");
     $req->execute([$courriel]);
     $nb = $req->rowCount();
     if($nb == 0){
-        return "<script>document.getElementById('erreur').textContent = 'Vérifier votre mot de passe.';</script>";
+        return "<script>document.getElementById('erreur').textContent = '".$json['login_error_password']."';</script>";
     }
     else{
         $ligne = $req->fetch();
@@ -34,7 +37,7 @@ function ConnecterUsager($bd, $courriel, $mdp){
             return null;
         }
         else{
-            return "<script>document.getElementById('erreur').textContent = 'Vérifier votre mot de passe.';</script>";
+            return "<script>document.getElementById('erreur').textContent = '".$json['login_error_password']."';</script>";
         }
     }
 }

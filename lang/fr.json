@@ -66,6 +66,6 @@
   "login_password": "Mot de passe",
   "login_submit_btn": "SE CONNECTER",
   "login_reset_btn": "ANNULER",
-  "login_reserv": "* Cette section est réservée à l'administation"
-
+  "login_reserv": "* Cette section est réservée à l'administation",
+  "login_error_password": "Vérifier votre mot de passe."
 }

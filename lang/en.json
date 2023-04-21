@@ -66,5 +66,6 @@
   "login_password": "Password",
   "login_submit_btn": "LOG IN",
   "login_reset_btn": "CANCEL",
-  "login_reserv": "* This section is reserved for the administration"
+  "login_reserv": "* This section is reserved for the administration",
+  "login_error_password": "Check your password."
 }
