@@ -18,7 +18,7 @@
     <!-- SIDEBAR -->
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+        <a href="index.php" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
         <ul class="list-unstyled components mb-5">
           <li class="active"><a href="index.php">Accueil</a></li>
           <li><a href="voitures.php">Nos Voitures</a></li>
