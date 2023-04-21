@@ -4,6 +4,7 @@
   "header_services":"Services",
   "header_prices":"Prices",
   "header_contact":"Contact us",
+  "header_copyright":"All rights reserved | This template is made by",
   "header_book":"Booking",
   "header_login":"Login",
   "header_fr_btn":"[French",
@@ -15,9 +16,10 @@
   "index_text_3":"Welcome to our house !",
 
   "cars_title":"Cars",
+  "cars_no_cars":"No cars...",
   "cars_brand":"Brand",
   "cars_year":"Year",
-  "cars_book":"Book this car",
+  "cars_book_btn":"Book this car",
 
   "services_title":"Services",
   "services_cars":"Car rental",
@@ -45,5 +47,22 @@
 
   "contact_title":"Contact us",
   "contact_phone":"Phone",
-  "contact_email":"Email"
+  "contact_email":"Email",
+
+  "booking_title": "Booking",
+  "booking_date_start": "Check-in",
+  "booking_date_end": "Check-out",
+  "booking_email": "Customer email",
+  "booking_cars": "Cars",
+  "booking_no_cars": "No cars...",
+  "booking_code": "Promo code",
+  "booking_insurance": "Additional insurance",
+  "booking_book_btn": "Book",
+
+  "login_title": "Log in",
+  "login_email": "Email",
+  "login_password": "Password",
+  "login_submit_btn": "LOG IN",
+  "login_reset_btn": "CANCEL",
+  "login_reserv": "* This section is reserved for the administration"
 }

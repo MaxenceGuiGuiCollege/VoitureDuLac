@@ -10,6 +10,7 @@ else
     $lang = "fr";
 setcookie('lang', $lang, time()+365*24*60*60);
 $json = obtenirJson($lang);
+//DEFINIR LA BD
 $bd = null;
 ConnecterBd($bd);
 //VERIFICATION CONNEXION
@@ -23,12 +24,12 @@ else{
     include("inclus/entete.inc.php");
 }
 ?>
-<!-- VOITURES -->
-<h2 class="mb-4"><?php echo $json['cars_title'] ?></h2>
+    <!-- VOITURES -->
+    <h2 class="mb-4"><?php echo $json['cars_title'] ?></h2>
 <?php
 // VERIFICATION NOMBRE DE VOITURES
 if(CompterVoitures($bd) == 0){
-    print("Aucune voitures.");
+    echo $json['cars_no_cars'];
 }
 else{
     AfficherVoitures($bd, $lang);

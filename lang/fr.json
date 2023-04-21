@@ -4,6 +4,7 @@
   "header_services":"Nos Services",
   "header_prices":"Nos Tarifs",
   "header_contact":"Nous Rejoindre",
+  "header_copyright":"Tous droits réservés | Ce modèle est réalisé par",
   "header_book":"Réservation",
   "header_login":"Connexion",
   "header_fr_btn":"[Français",
@@ -15,9 +16,10 @@
   "index_text_3":"Bienvenue chez nous !",
 
   "cars_title":"Nos Voitures",
+  "cars_no_cars":"Aucune Voitures...",
   "cars_brand":"Marque",
   "cars_year":"Année",
-  "cars_book":"Réserver cette voiture",
+  "cars_book_btn":"Réserver cette voiture",
 
   "services_title":"Nos Services",
   "services_cars":"Location de voiture",
@@ -45,6 +47,23 @@
 
   "contact_title":"Nous Rejoindre",
   "contact_phone":"Téléphone",
-  "contact_email":"Courriel"
+  "contact_email":"Courriel",
+
+  "booking_title": "Réservation",
+  "booking_date_start": "Date début",
+  "booking_date_end": "Date fin",
+  "booking_email": "Courriel du client",
+  "booking_cars": "Nos voitures",
+  "booking_no_cars": "Aucune voitures...",
+  "booking_code": "Code promo",
+  "booking_insurance": "Assurance supplémentaire",
+  "booking_book_btn": "Réserver",
+
+  "login_title": "Connexion",
+  "login_email": "Courriel",
+  "login_password": "Mot de passe",
+  "login_submit_btn": "SE CONNECTER",
+  "login_reset_btn": "ANNULER",
+  "login_reserv": "* Cette section est réservée à l'administation"
 
 }

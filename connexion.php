@@ -1,6 +1,16 @@
 <?php
 session_start();
 include("librairies/fonctions.lib.php");
+//DEFINIR LA LANGUE
+if(isset($_GET['lang']))
+    $lang = $_GET['lang'];
+else if(isset($_COOKIE['lang']))
+    $lang = $_COOKIE['lang'];
+else
+    $lang = "fr";
+setcookie('lang', $lang, time()+365*24*60*60);
+$json = obtenirJson($lang);
+//DEFINIR LA BD
 $bd = null;
 ConnecterBd($bd);
 // INITIALISER LA CONNEXION À FAUX
@@ -32,19 +42,19 @@ else{
 include("inclus/entete.inc.php");
 ?>
     <!-- CONNEXION -->
-    <h2 class="mb-4">Connexion</h2>
+    <h2 class="mb-4"><?php echo $json['login_title'] ?></h2>
     <form action="connexion.php?action=connecter" name="formConnexion" method="post">
         <fieldset>
-            <p>Courriel : </p>
+            <p><?php echo $json['login_email'] ?> : </p>
             <input type="text" name="courriel">
-            <p>Mot de passe : </p>
+            <p><?php echo $json['login_password'] ?> : </p>
             <input type="password" name="mdp">
         </fieldset>
         <fieldset>
-            <input type="submit" value="SE CONNECTER">
-            <input type="reset" value="ANNULER">
+            <input type="submit" value="<?php echo $json['login_submit_btn'] ?>">
+            <input type="reset" value="<?php echo $json['login_reset_btn'] ?>">
             <p id="erreur"></p>
-            <p id="reserve">* Cette section est réservée à l'administation</p>
+            <p id="reserve"><?php echo $json['login_reserv'] ?></p>
         </fieldset>
     </form>
 <?php

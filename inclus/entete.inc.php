@@ -29,8 +29,8 @@
         <br><br><br>
         <div class="footer">
           <p>Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
-            by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+            <script>document.write(new Date().getFullYear());</script> <?php echo $json['header_copyright'] ?>
+            <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
         </div>
 
       </div>

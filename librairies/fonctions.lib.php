@@ -63,7 +63,7 @@ function AfficherVoitures($bd, $lang){
                         <p>".$json['cars_brand']." : ".$ligne->marque."</p>
                         <p>".$json['cars_year']." : ".$ligne->annee."</p>
                         <p>".$ligne->$nameDescription."</p>
-                        <a href='reservation.php?select=".$ligne->idVoiture."'>".$json['cars_book']."</a>
+                        <a href='reservation.php?select=".$ligne->idVoiture."'>".$json['cars_book_btn']."</a>
                     </div>
                 </div>");
     }
