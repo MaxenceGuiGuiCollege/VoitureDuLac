@@ -99,7 +99,9 @@ function obtenirJson($lang){
     return json_decode($contenu_json, true);
 }
 // Fonction qui vérifie si la reservation séléctionnée par le client est possible.
-function VerifierReservation($bd, $dateDebut, $courriel, $idVoiture){
+function VerifierReservation($bd, $dateDebut, $courriel, $idVoiture, $lang){
+
+    $json = obtenirJson($lang);
 
     $reqReserv = "SELECT * FROM reservation
                             WHERE noVoiture = '$idVoiture'
@@ -109,7 +111,8 @@ function VerifierReservation($bd, $dateDebut, $courriel, $idVoiture){
     $nbReserv = $resReserv->rowCount();
     if($nbReserv != 0){
         return "<script>document.getElementById('erreur').textContent =
-            'La voiture choisie n\'est pas disponible dans les dates séléctionnées.';</script>";
+            '".$json['booking_error_car']."';</script>";
+
     }
 
     $reqClient = "SELECT * FROM client WHERE courriel = '$courriel'";
@@ -117,13 +120,15 @@ function VerifierReservation($bd, $dateDebut, $courriel, $idVoiture){
     $nbClient = $resClient->rowCount();
     if($nbClient == 0){
         return "<script>document.getElementById('erreur').textContent =
-            'Le courriel n\'est pas inscrit dans la liste de nos client.';</script>";
+            '".$json['booking_error_email']."';</script>";
     }
 
     return null;
 }
 // Fonction qui ajoute la reservation séléctionnée par le client.
-function AjouterReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture){
+function AjouterReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture, $lang){
+
+    $json = obtenirJson($lang);
 
     $reqClient = "SELECT idClient FROM client WHERE courriel = '$courriel'";
     $resClient = $bd->query($reqClient);

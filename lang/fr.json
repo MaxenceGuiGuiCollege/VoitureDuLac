@@ -58,6 +58,8 @@
   "booking_code": "Code promo",
   "booking_insurance": "Assurance supplémentaire",
   "booking_book_btn": "Réserver",
+  "booking_error_car": "La voiture choisie n\\'est pas disponible dans les dates séléctionnées.",
+  "booking_error_email": "Le courriel n\\'est pas inscrit dans la liste de nos client.",
 
   "login_title": "Connexion",
   "login_email": "Courriel",
