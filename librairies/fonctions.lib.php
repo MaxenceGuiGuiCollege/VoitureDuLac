@@ -176,6 +176,7 @@ function AfficherModifierVoiture($bd){
     print(" </table>
             <p id='aide'>-> Selectionner la voiture à modifier en cliquant sur le lien modifier</p>");
 }
+// Fonction qui permet d'afficher la voiture seule selectionnée.
 function AfficherModifierVoitureSeule($bd, $no){
 
     $req = $bd->prepare("SELECT * FROM voiture WHERE idVoiture = ?;");
@@ -210,5 +211,44 @@ function AfficherModifierVoitureSeule($bd, $no){
                 <p id='erreur'></p>
             </fieldset>
     </form>");
+}
+// Fonction qui permet d'afficher le menu de suppression des voitures.
+function AfficherSupprimerVoiture($bd){
+    $req = $bd->prepare("SELECT * FROM voiture;");
+    $req->execute();
+    $voitures = $req->fetchAll();
+    print("
+        <form action='supprimerVoiture.php?action=supprimer' name='formSupprimerVoiture' method='post'>
+            <fieldset>
+                <table id='tableSupprimerVoiture' class='table'>
+                    <tr>
+                        <th></th>
+                        <th>Nom</th>
+                        <th>Marque</th>
+                        <th>Année</th>
+                        <th>Km</th>
+                        <th>Description</th>
+                    </tr>");
+    $cmpt = 0;
+    foreach($voitures as $voiture){
+        print("     <tr>
+                        <td><input type='checkbox' name='chk".$voiture['idVoiture']."' id='chkNo$cmpt'></td>
+                        <td>".$voiture['nomVoiture']."</td>
+                        <td>".$voiture['marque']."</td>
+                        <td>".$voiture['annee']."</td>
+                        <td>".$voiture['km']."</td>
+                        <td>".$voiture['description_fr']."</td>
+                    </tr>");
+        $cmpt++;
+    }
+    print("
+                </table>
+            </fieldset>
+            <fieldset>
+                <input type='button' onclick='verifierValeursSupprimer();' value='Supprimer'>
+                <input type='reset' value='Annuler'>
+                <p id='erreur'></p>
+            </fieldset>
+        </form>");
 }
 ?>

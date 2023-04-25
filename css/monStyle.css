@@ -1,4 +1,10 @@
 
+table,
+table th,
+table td{
+    border: 1px lightgray solid;
+}
+
 p#erreur{
     color: red;
 }
@@ -109,11 +115,6 @@ form[name=formAjouterVoiture] fieldset:last-of-type{
 
 
 /* MODIFIER VOITURE */
-table#tableModifierVoiture,
-table#tableModifierVoiture th,
-table#tableModifierVoiture td{
-    border: 1px lightgray solid;
-}
 form[name=formModifierVoiture] p{
     margin-bottom: 0;
 }
