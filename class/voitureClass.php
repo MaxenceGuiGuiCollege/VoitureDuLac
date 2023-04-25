@@ -1,6 +1,6 @@
 <?php
 
-class voitureClass{
+class Voiture{
 
     private $idVoiture;
     private $nomVoiture;
