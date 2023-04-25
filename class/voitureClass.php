@@ -165,21 +165,21 @@ class Voiture{
 
         $id = $this->idVoiture;
 
-        rename("temp/img_temp.png", "images/$id.png");
+        rename("temp/img_temp.png", "images/$id.jpg");
 
     }
     private function supprimerImage(){
 
         $id = $this->idVoiture;
 
-        if(file_exists("images/$id.png")){
-            unlink("images/$id.png");
+        if(file_exists("images/$id.jpg")){
+            unlink("images/$id.jpg");
         }
 
     }
     private function modifierImage(){
 
-        if(file_exists("temp/img_temp.png")) {
+        if(file_exists("temp/img_temp.jpg")) {
             $this->supprimerImage();
             $this->ajouterImage();
         }
