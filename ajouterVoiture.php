@@ -33,7 +33,6 @@ include("inclus/enteteAdmin.inc.php");
                 <input type="reset" value="Annuler" class="btn btn-primary">
                 <p id="erreur"></p>
             </fieldset>
-
     </form>
 <?php
 include("inclus/piedPage.inc.php");

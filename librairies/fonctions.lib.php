@@ -145,4 +145,70 @@ function AjouterReservation($bd, $dateDebut, $dateFin, $courriel, $idVoiture, $l
 
     echo "<script>alert('La reservation à bien été reçue. Nous communiquerons avec vous pour confirmer la suite.');</script>";
 }
+// Fonction qui permet d'afficher le menu de modification des voitures.
+function AfficherModifierVoiture($bd){
+    $req = $bd->prepare("SELECT * FROM voiture;");
+    $req->execute();
+    $voitures = $req->fetchAll();
+//    <form action='#' name='formModifierVoiture' method='post'>
+//            <fieldset>
+    print(" <table id='tableModifierVoiture' class='table'>
+                <tr>
+                    <th>Nom</th>
+                    <th>Marque</th>
+                    <th>Année</th>
+                    <th>Km</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>");
+    $cmpt = 0;
+    foreach($voitures as $voiture){
+        print(" <tr>
+                    <td>".$voiture['nomVoiture']."</td>
+                    <td>".$voiture['marque']."</td>
+                    <td>".$voiture['annee']."</td>
+                    <td>".$voiture['km']."</td>
+                    <td>".$voiture['description_fr']."</td>
+                    <td><a href='modifierVoiture.php?action=modifier&no=".$voiture['idVoiture']."'>Modifier</a></td>
+                </tr>");
+        $cmpt++;
+    }
+    print(" </table>
+            <p id='aide'>-> Selectionner la voiture à modifier en cliquant sur le lien modifier</p>");
+}
+function AfficherModifierVoitureSeule($bd, $no){
+
+    $req = $bd->prepare("SELECT * FROM voiture WHERE idVoiture = ?;");
+    $req->execute([$no]);
+    $ligne = $req->fetch();
+
+    print("<form action='#' name='formModifierVoiture' method='post'>
+            <fieldset>
+                <p>Nom de la voiture :</p>
+                <input type='text' name='nom' id='nom' value='".$ligne['nomVoiture']."' required>
+            </fieldset>
+
+            <fieldset>
+                <p>Marque :</p>
+                <p>Année :</p>
+                <p>Kilomètrage :</p>
+                <input type='text' name='marque' id='marque' value='".$ligne['marque']."'>
+                <input type='number' name='annee' id=vannee' value='".$ligne['annee']."' required>
+                <input type='number' name='km' id='km' value='".$ligne['km']."' required>
+            </fieldset>
+
+            <fieldset>
+                <p>Description (Français) :</p>
+                <p>Description (Anglais) :</p>
+                <textarea name='desFr' id='desFr'>".$ligne['description_fr']."</textarea>
+                <textarea name='desEn' id='desEn'>".$ligne['description_en']."</textarea>
+            </fieldset>
+
+            <fieldset>
+                <input type='submit' value='Modifier' class='btn btn-primary'>
+                <input type='reset' value='Annuler' onclick='window.location.assign(\"modifierVoiture.php\");' class='btn btn-primary'>
+                <p id='erreur'></p>
+            </fieldset>
+    </form>");
+}
 ?>

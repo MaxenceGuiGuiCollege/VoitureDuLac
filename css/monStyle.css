@@ -108,6 +108,45 @@ form[name=formAjouterVoiture] fieldset:last-of-type{
 }
 
 
+/* MODIFIER VOITURE */
+table#tableModifierVoiture,
+table#tableModifierVoiture th,
+table#tableModifierVoiture td{
+    border: 1px lightgray solid;
+}
+form[name=formModifierVoiture] p{
+    margin-bottom: 0;
+}
+form[name=formModifierVoiture] input[type=number],
+form[name=formModifierVoiture] input[type=text]{
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+    width: 100%;
+}
+form[name=formModifierVoiture] fieldset:nth-of-type(2){
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    column-gap: 1em;
+}
+form[name=formModifierVoiture] fieldset:nth-of-type(3){
+    display: grid;
+    grid-template-columns: auto auto;
+
+    column-gap: 1em;
+}
+form[name=formModifierVoiture] textarea{
+    height: 6em;
+}
+form[name=formModifierVoiture] fieldset:last-of-type{
+    display: grid;
+    grid-template-columns: max-content max-content;
+
+    margin-top: 1.5em;
+    column-gap: 1em;
+}
+
+
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) {
     div#content{
