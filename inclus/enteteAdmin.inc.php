@@ -22,8 +22,17 @@
         <ul class="list-unstyled components mb-5">
           <li class="active"><a href="index.php">Accueil</a></li>
           <li><a href="voitures.php">Nos Voitures</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestion Voitures
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Ajouter Voiture</a>
+              <a class="dropdown-item" href="#">Modifier Voiture</a>
+              <a class="dropdown-item" href="#">Supprimer Voiture</a>
+            </div>
+          </li>
           <li><a href="#">Gestion Factures</a></li>
-          <li><a href="#">Gestion Voitures</a></li>
           <li><a href="#">Gestion Clients</a></li>
         </ul>
         <br><br><br>

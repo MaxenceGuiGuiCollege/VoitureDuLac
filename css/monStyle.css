@@ -76,3 +76,17 @@ form[name=formReserv] input[type=email]{
     margin-top: 0.5em;
     width: 100%;
 }
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) {
+    div#content{
+        position: relative;
+    }
+    div.voiture{
+        grid-template-columns: max-content;
+    }
+
+    /*div.voiture img{*/
+    /*    width: 100%;*/
+    /*}*/
+}
