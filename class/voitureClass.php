@@ -28,6 +28,14 @@ class Voiture{
             $this->setAnnee($args[2]);
             $this->setKm($args[3]);
         }
+        if($ctp == 6){
+            $this->setNomVoiture($args[0]);
+            $this->setMarque($args[1]);
+            $this->setAnnee($args[2]);
+            $this->setKm($args[3]);
+            $this->setDescriptionFr($args[4]);
+            $this->setDescriptionEn($args[5]);
+        }
         if($ctp == 7){
             $this->setIdVoiture($args[0]);
             $this->setNomVoiture($args[1]);

@@ -40,6 +40,22 @@ if(inputDateToday != null){
 
 
 // VERIFICATION
+function verifierValeursAjouter(){
+    var nom = document.formAjouterVoiture.nom.value;
+    var marque = document.formAjouterVoiture.marque.value;
+    var annee = document.formAjouterVoiture.annee.value;
+    var km = document.formAjouterVoiture.km.value;
+    var desFr = document.formAjouterVoiture.desFr.value;
+    var desEn = document.formAjouterVoiture.desEn.value;
+
+    if(nom == "" || annee == "" || km == "" || desFr == "" || desEn == ""){
+        document.getElementById('erreur').textContent = 'Veuillez remplir tout les champs obligatoire.';
+    }
+    else{
+        document.formAjouterVoiture.submit();
+    }
+
+}
 function verifierValeursSupprimer(){
     var isOneCheck = false;
 
