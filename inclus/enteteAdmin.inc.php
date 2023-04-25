@@ -23,14 +23,14 @@
           <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gestion des voitures</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
-              <li><a href="#">Ajouter une voiture</a></li>
-              <li><a href="#">Modifier une voiture</a></li>
-              <li><a href="#">Supprimer une voiture</a></li>
+              <li><a href="ajouterVoiture.php">Ajouter une voiture</a></li>
+              <li><a href="modifierVoiture.php">Modifier une voiture</a></li>
+              <li><a href="supprimerVoiture.php">Supprimer une voiture</a></li>
             </ul>
           </li>
-          <li><a href="#">Gestion des clients</a></li>
-          <li><a href="#">Gestion des réservations</a></li>
-          <li><a href="#">Gestion des factures</a></li>
+          <li><a href="gestionClient.php">Gestion des clients</a></li>
+          <li><a href="gestionReservation.php">Gestion des réservations</a></li>
+          <li><a href="gestionFacture.php">Gestion des factures</a></li>
         </ul>
         <br><br><br>
         <div class="footer">
