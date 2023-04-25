@@ -10,6 +10,14 @@ else
   $lang = "fr";
 setcookie('lang', $lang, time()+365*24*60*60);
 $json = obtenirJson($lang);
+// VERIFICATION SI IL Y A UNE ACTION
+if(isset($_GET["action"])){
+  // VERIFICATION ACTION DECONNECTER
+  if($_GET["action"] == "deconnecter") {
+    $isConnected = false;
+    $_SESSION['isConnected'] = false;
+  }
+}
 //VERIFICATION CONNEXION
 if(isset($_SESSION['isConnected'])){
   if($_SESSION['isConnected'])
