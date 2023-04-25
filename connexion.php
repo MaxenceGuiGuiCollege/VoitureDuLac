@@ -34,7 +34,7 @@ if(isset($_GET["action"])){
 // VERIFICATION CONNEXION
 if($isConnected){
     $_SESSION['isConnected'] = true;
-    header("Location:index.php");
+    header("Location:ajouterVoiture.php");
 }
 else{
     $_SESSION['isConnected'] = false;
