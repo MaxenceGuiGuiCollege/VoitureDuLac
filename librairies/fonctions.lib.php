@@ -150,8 +150,6 @@ function AfficherModifierVoiture($bd){
     $req = $bd->prepare("SELECT * FROM voiture;");
     $req->execute();
     $voitures = $req->fetchAll();
-//    <form action='#' name='formModifierVoiture' method='post'>
-//            <fieldset>
     print(" <table id='tableModifierVoiture' class='table'>
                 <tr>
                     <th>Nom</th>
@@ -183,7 +181,7 @@ function AfficherModifierVoitureSeule($bd, $no){
     $req->execute([$no]);
     $ligne = $req->fetch();
 
-    print("<form action='#' name='formModifierVoiture' method='post'>
+    print("<form action='modifierVoiture.php?action=modifier&id=$no' name='formModifierVoiture' method='post'>
             <fieldset>
                 <p>Nom de la voiture :</p>
                 <input type='text' name='nom' id='nom' value='".$ligne['nomVoiture']."' required>
