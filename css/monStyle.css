@@ -77,6 +77,37 @@ form[name=formReserv] input[type=email]{
     width: 100%;
 }
 
+/* AJOUTER VOITURE */
+form[name=formAjouterVoiture] p{
+    margin-bottom: 0;
+}
+form[name=formAjouterVoiture] input[type=number],
+form[name=formAjouterVoiture] input[type=text]{
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+    width: 100%;
+}
+form[name=formAjouterVoiture] fieldset:nth-of-type(2),
+form[name=formAjouterVoiture] fieldset:nth-of-type(3){
+    display: grid;
+    grid-template-columns: auto auto;
+
+    column-gap: 1em;
+}
+form[name=formAjouterVoiture] textarea{
+    height: 10em;
+}
+form[name=formAjouterVoiture] input[type=file]{
+    margin: 2em 0;
+}
+form[name=formAjouterVoiture] fieldset:last-of-type{
+    display: grid;
+    grid-template-columns: max-content max-content;
+
+    column-gap: 1em;
+}
+
+
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) {
     div#content{
@@ -85,8 +116,4 @@ form[name=formReserv] input[type=email]{
     div.voiture{
         grid-template-columns: max-content;
     }
-
-    /*div.voiture img{*/
-    /*    width: 100%;*/
-    /*}*/
 }
