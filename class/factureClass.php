@@ -1,6 +1,6 @@
 <?php
 
-class factureClass{
+class Facture{
 
     private $idFacture;
     private $noReservation;

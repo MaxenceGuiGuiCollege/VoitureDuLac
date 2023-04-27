@@ -289,7 +289,11 @@ function AfficherReservation($bd){
         }
 
         print(" <tr>
-                    <td><img src='images/supprimer.png' alt='Logo supprimer'></td>
+                    <td>
+                        <a href='gestionReservation.php?action=supprimer&no=".$reserv['idReservation']."'>
+                            <img src='images/supprimer.png' alt='Logo supprimer'>
+                        </a>
+                    </td>
                     <td>".$nameVoit."</td>
                     <td>".$reserv['dateDebut']."</td>
                     <td>".$reserv['dateFin']."</td>
