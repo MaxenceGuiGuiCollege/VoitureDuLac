@@ -148,6 +148,12 @@ form[name=formModifierVoiture] fieldset:last-of-type{
 }
 
 
+/* MODIFIER VOITURE */
+form[name=formReservation] img{
+    width: 50px;
+}
+
+
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) {
     div#content{

@@ -47,6 +47,12 @@ function CompterVoitures($bd){
     $reqCount->execute();
     return $reqCount->fetch()[0];
 }
+// Fonction qui permet de compter le nombre de réservations.
+function CompterReservation($bd){
+    $reqCount = $bd->prepare("SELECT COUNT(idReservation) FROM reservation;");
+    $reqCount->execute();
+    return $reqCount->fetch()[0];
+}
 // Fonction qui permet d'afficher la liste des voitures.
 function AfficherVoitures($bd, $lang){
 
@@ -159,7 +165,6 @@ function AfficherModifierVoiture($bd){
                     <th>Description</th>
                     <th></th>
                 </tr>");
-    $cmpt = 0;
     foreach($voitures as $voiture){
         print(" <tr>
                     <td>".$voiture['nomVoiture']."</td>
@@ -169,7 +174,6 @@ function AfficherModifierVoiture($bd){
                     <td>".$voiture['description_fr']."</td>
                     <td><a href='modifierVoiture.php?action=modifier&no=".$voiture['idVoiture']."'>Modifier</a></td>
                 </tr>");
-        $cmpt++;
     }
     print(" </table>
             <p id='aide'>-> Selectionner la voiture à modifier en cliquant sur le lien modifier</p>");
@@ -248,5 +252,58 @@ function AfficherSupprimerVoiture($bd){
                 <p id='erreur'></p>
             </fieldset>
         </form>");
+}
+// Fonction qui permet d'afficher le menu de gestion des réservations.
+function AfficherReservation($bd){
+    $req = $bd->prepare("SELECT * FROM reservation WHERE dateFin >= current_date();");
+    $req->execute();
+    $reservs = $req->fetchAll();
+    print(" <form action='#' name='formReservation' method='post'>
+                <table id='tableReservation' class='table'>
+                    <tr>
+                        <th></th>
+                        <th>Voiture</th>
+                        <th>Date début</th>
+                        <th>Date fin</th>
+                        <th>Statut</th>
+                    </tr>");
+    foreach($reservs as $reserv){
+        $reqName = $bd->prepare("SELECT nomVoiture FROM voiture WHERE idVoiture = ?;");
+        $reqName->execute([$reserv['noVoiture']]);
+        $nameVoit = $reqName->fetchAll()[0][0];
+
+        $selectedAttente = "";
+        $selectedReserve = "";
+        $selectedNonDispo = "";
+
+        switch ($reserv['statut']){
+            case 0:
+                $selectedAttente = "selected";
+                break;
+            case 1:
+                $selectedReserve = "selected";
+                break;
+            default:
+                $selectedNonDispo = "selected";
+                break;
+        }
+
+        print(" <tr>
+                    <td><img src='images/supprimer.png' alt='Logo supprimer'></td>
+                    <td>".$nameVoit."</td>
+                    <td>".$reserv['dateDebut']."</td>
+                    <td>".$reserv['dateFin']."</td>
+                    <td>
+                        <select name='statut'>
+                            <option ".$selectedAttente.">Attente</option>
+                            <option ".$selectedReserve.">Réservé</option>
+                            <option ".$selectedNonDispo.">Non-disponible</option>
+                        </select>
+                    </td>
+                </tr>");
+    }
+    print("    </table>
+                <input type='submit' value='Mettre à jour les réservations' class='btn btn-primary'>
+            </form>");
 }
 ?>
