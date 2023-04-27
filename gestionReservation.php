@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("class/factureClass.php");
 include("class/reservationClass.php");
 include("librairies/fonctions.lib.php");
 //DEFINIR LA BD
@@ -22,6 +23,24 @@ if(isset($_GET['action'])){
             if(isset($_POST['statut'.$i])){
                 $reserv = new Reservation($i, $_POST['statut'.$i]);
                 $reserv->modifierStatusReservationBD($bd);
+
+                if($reserv->getStatut() == 1){
+                    $reqR = $bd->prepare("SELECT * FROM reservation WHERE idReservation = $i;");
+                    $reqR->execute();
+                    $reservBD = $reqR->fetchAll()[0];
+
+                    $reqV = $bd->prepare("SELECT km FROM voiture WHERE idVoiture = ".$reservBD['noVoiture'].";");
+                    $reqV->execute();
+                    $voitureBD = $reqV->fetchAll()[0];
+
+                    $facture = new Facture(
+                        $reservBD['noClient'],
+                        $reservBD['noVoiture'],
+                        $reservBD['dateDebut'],
+                        $voitureBD['km']
+                    );
+                    $facture->ajouterFactureBD($bd);
+                }
             }
         }
     }
