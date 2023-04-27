@@ -5,6 +5,7 @@
 #### BD pour VoitureDuLac.com
 ## Nom de la base de donnée: voitureDuLac
 
+# DROP DATABASE voitureDuLac;
 CREATE DATABASE voitureDuLac
 	DEFAULT CHARACTER SET utf8;
 USE voitureDuLac;
@@ -50,9 +51,18 @@ CREATE TABLE reservation
     noClient        SMALLINT NOT NULL REFERENCES client(idClient),
     dateDebut       DATE NOT NULL,
 	dateFin         DATE,
-	status          TINYINT,
+	statut          TINYINT,
 	PRIMARY KEY (idReservation, noVoiture)
 );
+
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (1,1,'2023-03-17', '2023-03-22',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (1,1,'2023-04-17', '2023-04-26',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (2,4,'2023-04-17', '2023-05-22',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (3,5,'2023-04-27', '2023-04-30',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (3,2,'2023-04-26', '2023-04-28',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (2,3,'2023-04-17', '2023-04-27',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (1,1,'2023-05-17', '2023-05-22',0);
+
 
 #DROP TABLE facture;
 CREATE TABLE facture

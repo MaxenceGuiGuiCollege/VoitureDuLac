@@ -1,11 +1,5 @@
-#### Serveur mySQL 
-## Hôte: localhost
-## Nom d'usager: root
 
-#### BD pour VoitureDuLac.com
-## Nom de la base de donnée: voitureDuLac
 
-#########################################################################
 #DROP TABLE voiture;
 CREATE TABLE voiture
 (
@@ -29,10 +23,10 @@ CREATE TABLE client
 (
     idClient    SMALLINT NOT NULL AUTO_INCREMENT,
     prenom      VARCHAR(25),
-    nom         VARCHAR(25),
-    courriel    VARCHAR(50) NOT NULL,
-    telephone   VARCHAR(10) NOT NULL,
-    PRIMARY KEY (idClient)
+	nom         VARCHAR(25),
+	courriel    VARCHAR(50) NOT NULL,
+	telephone   VARCHAR(10) NOT NULL,
+	PRIMARY KEY (idClient)
 );
 insert into client (prenom, nom, courriel, telephone) values ('Gerard','Guidez', '1945@collegealma.ca', '0680720368');
 insert into client (prenom, nom, courriel, telephone) values ('Marianne','Szij', '1971@collegealma.ca', '0660661114');
@@ -45,10 +39,19 @@ CREATE TABLE reservation
     noVoiture       SMALLINT NOT NULL REFERENCES voiture(idVoiture),
     noClient        SMALLINT NOT NULL REFERENCES client(idClient),
     dateDebut       DATE NOT NULL,
-    dateFin         DATE,
-    status          TINYINT,
-    PRIMARY KEY (idReservation, noVoiture)
+	dateFin         DATE,
+	statut          TINYINT,
+	PRIMARY KEY (idReservation, noVoiture)
 );
+
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (1,1,'2023-03-17', '2023-03-22',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (1,1,'2023-04-17', '2023-04-26',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (2,4,'2023-04-17', '2023-05-22',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (3,5,'2023-04-27', '2023-04-30',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (3,2,'2023-04-26', '2023-04-28',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (2,3,'2023-04-17', '2023-04-27',0);
+INSERT INTO reservation (noClient, noVoiture, dateDebut, dateFin, statut) VALUES (1,1,'2023-05-17', '2023-05-22',0);
+
 
 #DROP TABLE facture;
 CREATE TABLE facture
@@ -58,7 +61,7 @@ CREATE TABLE facture
     noClient        SMALLINT NOT NULL,
     noVoiture       SMALLINT NOT NULL,
     dateDebut       DATE NOT NULL,
-    dateFin         DATE,
+	dateFin         DATE,
     kmDebut         INT NOT NULL,
     kmFin           INT,
     montant         FLOAT,
