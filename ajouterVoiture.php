@@ -41,7 +41,7 @@ include("inclus/enteteAdmin.inc.php");
                 <textarea name="desEn" id="desEn"></textarea>
             </fieldset>
 
-            <input type="file" value="Choisir un fichier" required>
+            <input type="file" value="Choisir un fichier" name="photo" required>
 
             <fieldset>
                 <input type="submit" value="Ajouter" onclick="verifierValeursAjouter();" class="btn btn-primary">

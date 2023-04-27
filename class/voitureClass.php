@@ -172,10 +172,19 @@ class Voiture{
     private function ajouterImage(){
 
         $id = $this->idVoiture;
+        $filePath = $_FILES['photo']["tmp_name"];
 
-        rename("temp/img_temp.png", "images/$id.jpg");
-
+        if (!file_exists("images/".basename($filePath))){
+            move_uploaded_file($filePath,'images/'.$id.'.jpg');
+        }
     }
+//    private function ajouterImage(){
+//
+//        $id = $this->idVoiture;
+//
+//        rename("temp/img_temp.jpg", "images/$id.jpg");
+//
+//    }
     private function supprimerImage(){
 
         $id = $this->idVoiture;
