@@ -16,6 +16,10 @@ class Reservation{
 
         if($ctp == 1)
             $this->setIdReservation($args[0]);
+        if($ctp == 2){
+            $this->setIdReservation($args[0]);
+            $this->setStatut($args[1]);
+        }
         if($ctp == 4){
             $this->setIdReservation($args[0]);
             $this->setNoVoiture($args[1]);
@@ -89,7 +93,21 @@ class Reservation{
     }
     public function setStatut($statut)
     {
-        $this->statut = $statut;
+        $statutNb = null;
+
+        switch ($statut){
+            case "Attente":
+                $this->statut = 0;
+                break;
+            case "Réservé":
+                $this->statut = 1;
+                break;
+            case "Non-disponible":
+                $this->statut = 2;
+                break;
+        }
+
+
     }
 
     public function ajouterReservationBD($bd){
@@ -107,7 +125,7 @@ class Reservation{
                     noClient,
                     dateDebut,
                     dateFin, 
-                    status) VALUES (:iV, :iC, :dD, :dF, :s);");
+                    statut) VALUES (:iV, :iC, :dD, :dF, :s);");
         $reqA->execute($data);
 
         $this->setIdReservation($bd->lastInsertId());
@@ -129,7 +147,17 @@ class Reservation{
                    noClient = :iC,
                    dateDebut = :dD,
                    dateFin = :dF,
-                   status = :s WHERE idReservation = :i;");
+                   statut = :s WHERE idReservation = :i;");
+        $reqM->execute($data);
+    }
+    public function modifierStatusReservationBD($bd){
+
+        $data = [
+            'i' => $this->getIdReservation(),
+            's' => $this->getStatut()
+        ];
+
+        $reqM = $bd->prepare("UPDATE reservation SET statut = :s WHERE idReservation = :i;");
         $reqM->execute($data);
     }
     public function supprimerReservationBD($bd){

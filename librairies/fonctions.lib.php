@@ -258,7 +258,7 @@ function AfficherReservation($bd){
     $req = $bd->prepare("SELECT * FROM reservation WHERE dateFin >= current_date();");
     $req->execute();
     $reservs = $req->fetchAll();
-    print(" <form action='#' name='formReservation' method='post'>
+    print(" <form action='gestionReservation.php?action=modifier' name='formReservation' method='post'>
                 <table id='tableReservation' class='table'>
                     <tr>
                         <th></th>
@@ -298,7 +298,7 @@ function AfficherReservation($bd){
                     <td>".$reserv['dateDebut']."</td>
                     <td>".$reserv['dateFin']."</td>
                     <td>
-                        <select name='statut'>
+                        <select name='statut".$reserv['idReservation']."'>
                             <option ".$selectedAttente.">Attente</option>
                             <option ".$selectedReserve.">Réservé</option>
                             <option ".$selectedNonDispo.">Non-disponible</option>
@@ -309,5 +309,11 @@ function AfficherReservation($bd){
     print("    </table>
                 <input type='submit' value='Mettre à jour les réservations' class='btn btn-primary'>
             </form>");
+}
+// Fonction qui permet d'obtenir l'id le plus élévé de la table réservation.
+function GetMaxIdReservation($bd){
+    $req = $bd->prepare("SELECT MAX(idReservation) FROM reservation;");
+    $req->execute();
+    return $req->fetchAll()[0]['MAX(idReservation)'];
 }
 ?>
