@@ -325,20 +325,25 @@ function GetMaxIdReservation($bd){
 // Fonction qui permet d'afficher le menu de gestion des factures.
 function AfficherFactures($bd)
 {
-    $requete = $bd->prepare("SELECT idFacture, nom, prenom, nomVoiture, dateDebut, dateFin, assurance, kmDebut, kmFin FROM facture, client, voiture WHERE noClient=idClient AND noVoiture=idVoiture");
+    $requete = $bd->prepare("SELECT idFacture, nom, prenom, nomVoiture, dateDebut, dateFin, assurance, kmDebut, kmFin
+                                FROM facture, client, voiture
+                                WHERE noClient = idClient
+                                  AND noVoiture = idVoiture
+                                ORDER BY nom;");
     $requete->execute();
-    print(" <table class='table table-bordered' >
-                <tr>
-                    <th></th>
-                    <th> Nom client</th>
-                    <th> Voiture</th>
-                    <th> Date début</th>
-                    <th> Date fin</th>
-                    <th> Km départ</th>
-                    <th> Km arrivée</th>
-                    <th> Assurance</th>
-                    <th> &nbsp</th>
-                </tr>");
+    print(" <form action='#' name='formGestionFacture' method='post'>
+                <table class='table table-bordered' >
+                    <tr>
+                        <th></th>
+                        <th> Nom client</th>
+                        <th> Voiture</th>
+                        <th> Date début</th>
+                        <th> Date fin</th>
+                        <th> Km départ</th>
+                        <th> Km arrivée</th>
+                        <th> Assurance</th>
+                        <th> &nbsp</th>
+                    </tr>");
 
     while ($ligne = $requete->fetch()) {
         if ($ligne['assurance'] == 0)
@@ -348,7 +353,11 @@ function AfficherFactures($bd)
 
         $img = "images/supprimer.png";
         print("<tr>
-                   <td> <a href=''><img src='$img' alt='imgSupprimer' height='40' width='30'></a></td>
+                   <td>
+                       <a href='#' onclick='verifierSuppressionFacture($ligne[idFacture]);'>
+                           <img src='$img' alt='imgSupprimer' height='40' width='30'>
+                       </a>
+                   </td>
                    <td> $ligne[prenom] $ligne[nom]</td>
                    <td> $ligne[nomVoiture]</td>
                    <td> $ligne[dateDebut]</td>
@@ -360,6 +369,7 @@ function AfficherFactures($bd)
                </tr>");
     }
 
-    print("</table>");
+    print("</table>
+        </form>");
 }
 ?>

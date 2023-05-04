@@ -56,24 +56,13 @@ function verifierValeursAjouter(){
     }
 
 }
-function verifierValeursSupprimer(){
-    var isOneCheck = false;
 
-    var nbrLigne = document.getElementById('tableSupprimerVoiture').rows.length;
+function verifierSuppressionFacture(id){
+    var res = confirm("Voulez-vous vraiment supprimer cette facture ?");
 
-    for(var i = 0; i < nbrLigne - 1; i++){
-
-        if(document.getElementById('chkNo' + i).checked){
-            isOneCheck = true;
-        }
-    }
-
-    if(isOneCheck){
-        document.getElementById('erreur').textContent = "";
-        verifierSuppression();
-    }
-    else{
-        document.getElementById('erreur').textContent = 'Veuillez séléctionner une voiture.';
+    if(res){
+        document.formGestionFacture.submit();
+        window.location.assign("gestionFacture.php?action=supprimer&no="+id)
     }
 
 }
