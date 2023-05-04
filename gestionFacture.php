@@ -30,7 +30,12 @@ if(isset($_GET['action'])){
             else
                 $mont = null;
 
-            $fact = new Facture($_GET['num'], $_POST['kmFin'], $_POST['dateFin'], $ass, $mont);
+            $req = $bd->prepare("SELECT idVoiture FROM voiture
+                                WHERE nomVoiture = ".$_POST['voiture'].";");
+            $req->execute();
+            $ligne = $req->fetch();
+
+            $fact = new Facture($_GET['num'], $ligne['idVoiture'],$_POST['kmFin'], $_POST['dateFin'], $ass, $mont);
             $fact->modifierFactureBD($bd);
         }
     }

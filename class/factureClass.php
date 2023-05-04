@@ -26,12 +26,13 @@ class Facture{
             $this->setDateDebut($args[2]);
             $this->setKmDebut($args[3]);
         }
-        if($ctp == 5){
+        if($ctp == 6){
             $this->setIdFacture($args[0]);
-            $this->setKmFin($args[1]);
-            $this->setDateFin($args[2]);
-            $this->setAssurance($args[3]);
-            $this->setMontant($args[4]);
+            $this->setNoVoiture($args[1]);
+            $this->setKmFin($args[2]);
+            $this->setDateFin($args[3]);
+            $this->setAssurance($args[4]);
+            $this->setMontant($args[5]);
         }
         if($ctp == 10){
             $this->setIdFacture($args[0]);
@@ -169,6 +170,7 @@ class Facture{
 
         $data = [
             'i' => $this->getIdFacture(),
+            'nV' => $this->getNoVoiture(),
             'dF' => $this->getDateFin(),
             'kF' => $this->getKmFin(),
             'm' => $this->getMontant(),
@@ -180,6 +182,9 @@ class Facture{
                    kmFin = :kF,
                    montant = :m,
                    assurance = :a WHERE idFacture = :i;");
+        $reqM->execute($data);
+
+        $reqM = $bd->prepare("UPDATE voiture SET km = :kF WHERE idVoiture = :nV;");
         $reqM->execute($data);
     }
     public function supprimerFactureBD($bd){
