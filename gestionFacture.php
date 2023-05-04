@@ -20,8 +20,18 @@ if(isset($_GET['action'])){
     else if($_GET['action'] == 'modifier'){
         // VERIFICATION ID
         if(isset($_GET['num'])){
+            if(isset($_POST['assurance']))
+                $ass = 1;
+            else
+                $ass = 0;
 
-            //TODO
+            if(isset($_POST['montant']))
+                $mont = $_POST['montant'];
+            else
+                $mont = null;
+
+            $fact = new Facture($_GET['num'], $_POST['kmFin'], $_POST['dateFin'], $ass, $mont);
+            $fact->modifierFactureBD($bd);
         }
     }
 }

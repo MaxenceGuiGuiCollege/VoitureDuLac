@@ -28,10 +28,10 @@ class Facture{
         }
         if($ctp == 5){
             $this->setIdFacture($args[0]);
-            $this->setNoClient($args[1]);
-            $this->setNoVoiture($args[2]);
-            $this->setDateDebut($args[3]);
-            $this->setKmDebut($args[4]);
+            $this->setKmFin($args[1]);
+            $this->setDateFin($args[2]);
+            $this->setAssurance($args[3]);
+            $this->setMontant($args[4]);
         }
         if($ctp == 10){
             $this->setIdFacture($args[0]);
@@ -169,24 +169,14 @@ class Facture{
 
         $data = [
             'i' => $this->getIdFacture(),
-            'nR' => $this->getNoReservation(),
-            'nC' => $this->getNoClient(),
-            'nV' => $this->getNoVoiture(),
-            'dD' => $this->getDateDebut(),
             'dF' => $this->getDateFin(),
-            'kD' => $this->getKmDebut(),
             'kF' => $this->getKmFin(),
             'm' => $this->getMontant(),
             'a' => $this->getAssurance()
         ];
 
-        $reqM = $bd->prepare("UPDATE facture SET 
-                   noReservation = :nR,
-                   noClient = :nC,
-                   noVoiture = :nV,
-                   dateDebut = :dD,
+        $reqM = $bd->prepare("UPDATE facture SET
                    dateFin = :dF,
-                   kmDebut = :kD,
                    kmFin = :kF,
                    montant = :m,
                    assurance = :a WHERE idFacture = :i;");
