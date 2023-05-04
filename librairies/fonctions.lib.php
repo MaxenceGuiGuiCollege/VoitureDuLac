@@ -428,7 +428,7 @@ function AfficherFactureSeule($bd, $id){
                     <input type='submit' value='Sauvegarder' class='btn btn-primary'>
                     <input type='button' value='Calculer facture' class='btn btn-primary'>
                     <input type='button' value='Envoyer facture' class='btn btn-primary'>
-                    <input type='reset' value='Annuler' class='btn btn-primary'>
+                    <input type='reset' value='Annuler' onclick='window.location.assign(\"gestionFacture.php\");' class='btn btn-primary'>
                     <p id='erreur'></p>
                 </fieldset>
             </form>");
