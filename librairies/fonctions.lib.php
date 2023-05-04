@@ -331,6 +331,7 @@ function AfficherFactures($bd)
                                   AND noVoiture = idVoiture
                                 ORDER BY nom;");
     $requete->execute();
+    print("<h2 class='mb-4'>Gestion des Factures</h2>");
     print(" <form action='#' name='formGestionFacture' method='post'>
                 <table class='table table-bordered' >
                     <tr>
@@ -365,11 +366,71 @@ function AfficherFactures($bd)
                    <td> $ligne[kmDebut]</td>
                    <td> $ligne[kmFin]</td>
                    <td> $ass</td>
-                   <td> <a href=''>Mettre à jour</a></td>
+                   <td> <a href='gestionFacture.php?action=modifier&id=$ligne[idFacture]'>Mettre à jour</a></td>
                </tr>");
     }
 
     print("</table>
         </form>");
+}
+// Fonction qui permet d'afficher la facture seule selectionnée.
+function AfficherFactureSeule($bd, $id){
+
+    $req = $bd->prepare("SELECT idFacture, nom, prenom, nomVoiture, dateDebut, dateFin, assurance, kmDebut, kmFin, montant
+                                FROM facture, client, voiture
+                                WHERE noClient = idClient
+                                  AND noVoiture = idVoiture
+                                  AND idFacture = $id
+                                ORDER BY nom;");
+    $req->execute();
+    $ligne = $req->fetch();
+
+    if ($ligne['assurance'] == 0)
+        $ass = "";
+    else
+        $ass = "checked";
+
+    print("<h2 class='mb-4'>Gestion de la Factures : ".$id."</h2>");
+    print("<form action='gestionFacture.php?action=modifier&num=$id' name='formModifierFacture' method='post'>
+                <a href='#' onclick='print()'>Imprimer</a>
+                <fieldset>
+                    <p>Nom du client :</p>
+                    <p>Voiture :</p>
+                    <input type='text' name='nom' id='nom' value='".$ligne['prenom']." ".$ligne['nom']."' disabled>
+                    <input type='text' name='voiture' id='voiture' value='".$ligne['nomVoiture']."' disabled>
+                </fieldset>
+                
+                <fieldset>
+                    <p>Kilometrage (debut - fin) :</p>
+                    <p>Date (debut - fin) :</p>
+                    <div>
+                        <input type='number' name='kmDebut' id='kmDebut' value='".$ligne['kmDebut']."' disabled>
+                        <input type='number' name='kmFin' id='kmFin' value='".$ligne['kmFin']."'>
+                    </div>
+                    <div>
+                        <input type='date' name='dateDebut' id='dateDebut' value='".$ligne['dateDebut']."' disabled>
+                        <input type='date' name='dateFin' id='dateFin' value='".$ligne['dateFin']."'>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <div>
+                        <p>Assurance :</p>
+                        <input type='checkbox' name='assurance' id='assurance' $ass>
+                    </div>
+                    <div>
+                        <p>Montant de la facture :</p>
+                        <input type='number' name='montant' id='montant' value='".$ligne['montant']."' disabled>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <input type='submit' value='Sauvegarder' class='btn btn-primary'>
+                    <input type='button' value='Calculer facture' class='btn btn-primary'>
+                    <input type='button' value='Envoyer facture' class='btn btn-primary'>
+                    <input type='reset' value='Annuler' class='btn btn-primary'>
+                    <p id='erreur'></p>
+                </fieldset>
+            </form>");
 }
 ?>

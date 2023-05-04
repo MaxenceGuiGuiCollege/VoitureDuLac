@@ -148,9 +148,45 @@ form[name=formModifierVoiture] fieldset:last-of-type{
 }
 
 
-/* MODIFIER VOITURE */
+/* GESTION RESERVATION */
 form[name=formReservation] img{
     width: 50px;
+}
+
+
+/* GESTION FACTURE */
+form[name=formModifierFacture] a{
+     display: block;
+     width: 100%;
+     text-align: right;
+     padding: 1em;
+     border-bottom: 1px gray solid;
+     margin-bottom: 1em;
+}
+form[name=formModifierFacture] fieldset{
+    margin-top: 1em;
+}
+
+form[name=formModifierFacture] fieldset:first-of-type,
+form[name=formModifierFacture] fieldset:nth-of-type(2),
+form[name=formModifierFacture] fieldset:nth-of-type(3),
+form[name=formModifierFacture] fieldset:nth-of-type(2) div{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1em;
+}
+form[name=formModifierFacture] fieldset:nth-of-type(3) div:last-of-type{
+    display: grid;
+    grid-template-columns: max-content auto;
+    column-gap: 1em;
+}
+form[name=formModifierFacture] fieldset:last-of-type{
+    padding-top: 1em;
+    border-top: 1px gray solid;
+    margin-top: 2em;
+}
+form[name=formModifierFacture] fieldset:last-of-type input{
+    margin-right: 1em;
 }
 
 

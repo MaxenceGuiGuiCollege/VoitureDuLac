@@ -16,18 +16,29 @@ if(isset($_GET['action'])){
             $fact->supprimerFactureBD($bd);
         }
     }
+    // VERIFICATION ACTION MODIFIER
+    else if($_GET['action'] == 'modifier'){
+        // VERIFICATION ID
+        if(isset($_GET['num'])){
+
+            //TODO
+        }
+    }
 }
 include("inclus/enteteAdmin.inc.php");
 ?>
     <!-- GESTION FACTURE -->
-    <h2 class='mb-4'>Gestion des Factures</h2>
 <?php
 // VERIFICATION NOMBRE DE RESERVATIONS
 if(CompterFactures($bd) == 0){
+    print("<h2 class='mb-4'>Gestion des Factures</h2>");
     print("Aucune Factures...");
 }
 else{
-    AfficherFactures($bd);
+    if(isset($_GET['id']))
+        AfficherFactureSeule($bd, $_GET['id']);
+    else
+        AfficherFactures($bd);
 }
 include("inclus/piedPage.inc.php");
 ?>
