@@ -392,23 +392,26 @@ function AfficherFactureSeule($bd, $id){
 
     print("<h2 class='mb-4'>Gestion de la Factures : ".$id."</h2>");
     print("<form action='gestionFacture.php?action=modifier&num=$id' name='formModifierFacture' method='post'>
-                <a href='#' onclick='print()'>Imprimer</a>
+                <div>
+                    <a href='#' onclick='print()'>Imprimer</a>
+                </div>
+                
                 <fieldset>
                     <p>Nom du client :</p>
                     <p>Voiture :</p>
-                    <input type='text' name='nom' id='nom' value='".$ligne['prenom']." ".$ligne['nom']."' disabled>
-                    <input type='text' name='voiture' id='voiture' value='".$ligne['nomVoiture']."' disabled>
+                    <input type='text' name='nom' id='nom' value='".$ligne['prenom']." ".$ligne['nom']."' readonly>
+                    <input type='text' name='voiture' id='voiture' value='".$ligne['nomVoiture']."' readonly>
                 </fieldset>
                 
                 <fieldset>
                     <p>Kilometrage (debut - fin) :</p>
                     <p>Date (debut - fin) :</p>
                     <div>
-                        <input type='number' name='kmDebut' id='kmDebut' value='".$ligne['kmDebut']."' disabled>
+                        <input type='number' name='kmDebut' id='kmDebut' value='".$ligne['kmDebut']."' readonly>
                         <input type='number' name='kmFin' id='kmFin' value='".$ligne['kmFin']."'>
                     </div>
                     <div>
-                        <input type='date' name='dateDebut' id='dateDebut' value='".$ligne['dateDebut']."' disabled>
+                        <input type='date' name='dateDebut' id='dateDebut' value='".$ligne['dateDebut']."' readonly>
                         <input type='date' name='dateFin' id='dateFin' value='".$ligne['dateFin']."'>
                     </div>
                 </fieldset>
@@ -420,7 +423,7 @@ function AfficherFactureSeule($bd, $id){
                     </div>
                     <div>
                         <p>Montant de la facture :</p>
-                        <input type='number' name='montant' id='montant' value='".$ligne['montant']."' disabled>
+                        <input type='number' name='montant' id='montant' value='".$ligne['montant']."' readonly>
                     </div>
                 </fieldset>
                 

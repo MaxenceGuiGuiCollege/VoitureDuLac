@@ -25,13 +25,13 @@ if(isset($_GET['action'])){
             else
                 $ass = 0;
 
-            if(isset($_POST['montant']))
+            if($_POST['montant'] != null)
                 $mont = $_POST['montant'];
             else
-                $mont = null;
+                $mont = 0;
 
             $req = $bd->prepare("SELECT idVoiture FROM voiture
-                                WHERE nomVoiture = ".$_POST['voiture'].";");
+                                WHERE nomVoiture = '".$_POST['voiture']."';");
             $req->execute();
             $ligne = $req->fetch();
 

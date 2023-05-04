@@ -155,7 +155,7 @@ form[name=formReservation] img{
 
 
 /* GESTION FACTURE */
-form[name=formModifierFacture] a{
+form[name=formModifierFacture] > div{
      display: block;
      width: 100%;
      text-align: right;

@@ -168,13 +168,16 @@ class Facture{
     }
     public function modifierFactureBD($bd){
 
-        $data = [
+        $dataF = [
             'i' => $this->getIdFacture(),
-            'nV' => $this->getNoVoiture(),
             'dF' => $this->getDateFin(),
             'kF' => $this->getKmFin(),
             'm' => $this->getMontant(),
             'a' => $this->getAssurance()
+        ];
+        $dataV = [
+            'nV' => $this->getNoVoiture(),
+            'kF' => $this->getKmFin()
         ];
 
         $reqM = $bd->prepare("UPDATE facture SET
@@ -182,10 +185,10 @@ class Facture{
                    kmFin = :kF,
                    montant = :m,
                    assurance = :a WHERE idFacture = :i;");
-        $reqM->execute($data);
+        $reqM->execute($dataF);
 
-        $reqM = $bd->prepare("UPDATE voiture SET km = :kF WHERE idVoiture = :nV;");
-        $reqM->execute($data);
+        $reqMV = $bd->prepare("UPDATE voiture SET km = :kF WHERE idVoiture = :nV;");
+        $reqMV->execute($dataV);
     }
     public function supprimerFactureBD($bd){
 
