@@ -376,7 +376,7 @@ function AfficherFactures($bd)
 // Fonction qui permet d'afficher la facture seule selectionnée.
 function AfficherFactureSeule($bd, $id){
 
-    $req = $bd->prepare("SELECT idFacture, nom, prenom, nomVoiture, dateDebut, dateFin, assurance, kmDebut, kmFin, montant
+    $req = $bd->prepare("SELECT idFacture, nom, prenom, courriel, nomVoiture, dateDebut, dateFin, assurance, kmDebut, kmFin, montant
                                 FROM facture, client, voiture
                                 WHERE noClient = idClient
                                   AND noVoiture = idVoiture
@@ -389,6 +389,11 @@ function AfficherFactureSeule($bd, $id){
         $ass = "";
     else
         $ass = "checked";
+
+    if ($ligne['montant'] != null)
+        $mont = number_format($ligne['montant'],2);
+    else
+        $mont = $ligne['montant'];
 
     print("<h2 class='mb-4'>Gestion de la Factures : ".$id."</h2>");
     print("<form action='gestionFacture.php?action=modifier&num=$id' name='formModifierFacture' method='post'>
@@ -423,17 +428,70 @@ function AfficherFactureSeule($bd, $id){
                     </div>
                     <div>
                         <p>Montant de la facture :</p>
-                        <input type='number' name='montant' id='montant' value='".number_format($ligne['montant'],2)."' readonly>
+                        <input type='number' name='montant' id='montant' value='".$mont."' readonly>
                     </div>
                 </fieldset>
                 
                 <fieldset>
                     <input type='submit' value='Sauvegarder' class='btn btn-primary'>
                     <input type='button' value='Calculer facture' onclick='calculerFacture($id);' class='btn btn-primary'>
-                    <input type='button' value='Envoyer facture' class='btn btn-primary'>
+                    <input type='button'
+                        value='Envoyer facture'
+                        onclick='window.location.assign(\"gestionFacture.php?action=envoyer&cour=".$ligne['courriel']."&id=".$id."\");'
+                        class='btn btn-primary'>
                     <input type='reset' value='Annuler' onclick='window.location.assign(\"gestionFacture.php\");' class='btn btn-primary'>
                     <p id='erreur'></p>
                 </fieldset>
             </form>");
+}
+// Fonction qui permet d'envoyer un mail de récap de la facture.
+function EnvoyerFacture($bd, $mail, $idFacture){
+
+    $req = $bd->prepare("SELECT * FROM client WHERE courriel = ?;");
+    $req->execute([$mail]);
+    $ligne = $req->fetch();
+
+    $entete = "From:202130087@collegealma.ca\r\n";
+    $objet = "Récapitulatif de facture";
+
+    $texte = "Bonjour ".$ligne['nom']." ".$ligne['prenom'].",
+        
+Voici une copie de la facture de location :
+        ".getRecapFacture($bd, $idFacture)."
+        
+Nous vous serions reconnaissants de procéder au paiement dans les meilleurs délais.
+
+Merci de l'intéret porter pour nos belles voitures !
+
+Voiture du Lac";
+
+//    if(!mail($mail, $objet, $texte, $entete)){
+    if(!mail("202130087@collegealma.ca", $objet, $texte, $entete)){
+
+        print("Le courriel ne s'est pas bien transmis ! Vérifier votre adresse mail.");
+    }
+    else print("Le courriel s'est bien transmis !");
+}
+// Fonction qui permet de faire le récap de la facture.
+function getRecapFacture($bd, $idFacture){
+    $recap = "\n";
+
+    $reqF = $bd->prepare("SELECT * FROM facture WHERE idFacture = ?;");
+    $reqF->execute([$idFacture]);
+    $ligneF = $reqF->fetch();
+
+    $reqV = $bd->prepare("SELECT nomVoiture FROM voiture WHERE idVoiture = ".$ligneF['noVoiture'].";");
+    $reqV->execute();
+    $ligneV = $reqV->fetch();
+
+    $recap .= "Voiture : ".$ligneV['nomVoiture']."\n";
+    $recap .= "Date de début : ".$ligneF['dateDebut']."\n";
+    $recap .= "Date de fin : ".$ligneF['dateFin']."\n";
+    $recap .= "Kilométrage de début : ".$ligneF['kmDebut']."\n";
+    $recap .= "Kilométrage de fin : ".$ligneF['kmFin']."\n";
+    $recap .= "Assurance : ".$ligneF['assurance']."\n";
+    $recap .= "Montant de la facture : ".$ligneF['montant']."\n";
+
+    return $recap;
 }
 ?>

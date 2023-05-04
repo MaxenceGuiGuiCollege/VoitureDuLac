@@ -43,6 +43,10 @@ if(isset($_GET['action'])){
             $fact->modifierFactureBD($bd);
         }
     }
+    else if($_GET['action'] == 'envoyer'){
+        if(isset($_GET['cour']))
+            EnvoyerFacture($bd, $_GET['cour'], $_GET['id']);
+    }
 }
 include("inclus/enteteAdmin.inc.php");
 ?>
