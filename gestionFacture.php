@@ -20,6 +20,7 @@ if(isset($_GET['action'])){
     else if($_GET['action'] == 'modifier'){
         // VERIFICATION ID
         if(isset($_GET['num'])){
+
             if(isset($_POST['assurance']))
                 $ass = 1;
             else
@@ -29,6 +30,9 @@ if(isset($_GET['action'])){
                 $mont = $_POST['montant'];
             else
                 $mont = 0;
+
+            if(isset($_GET['tot']))
+                $mont = $_GET['tot'];
 
             $req = $bd->prepare("SELECT idVoiture FROM voiture
                                 WHERE nomVoiture = '".$_POST['voiture']."';");

@@ -73,5 +73,42 @@ function verifierSuppression(){
     if(res){
         document.formSupprimerVoiture.submit();
     }
+}
 
+
+// FACTURE
+function calculerFacture(id){
+    var total = 0;
+
+    var kmDebut = document.formModifierFacture.kmDebut.value;
+    var kmFin = document.formModifierFacture.kmFin.value;
+    var dateDebut = new Date(document.formModifierFacture.dateDebut.value);
+    var dateFin = new Date(document.formModifierFacture.dateFin.value);
+    var ass = document.formModifierFacture.assurance.value;
+
+    if(kmFin == "" || dateFin == ""){
+        document.getElementById('erreur').textContent =
+            'Veuillez remplir tout les champs en ce qui concerne le kilometrage final et la date de fin.';
+    }
+    else{
+        var jours = (dateFin - dateDebut)/ 3600000 / 24;
+        var kms = (kmFin - kmDebut);
+
+        var totBase = 35 * jours;
+        total += totBase;
+
+        var totAssu = 12.95 * jours;
+        if(ass == "on"){
+            total += totAssu;
+        }
+
+        var totKm = (kms - 100) * 0.11;
+        total += totKm;
+
+        total *= 1.09975;
+        total *= 1.05;
+
+        document.formModifierFacture.action = "gestionFacture.php?action=modifier&id=" + id + "&num=" + id + "&tot=" + total;
+        document.formModifierFacture.submit();
+    }
 }

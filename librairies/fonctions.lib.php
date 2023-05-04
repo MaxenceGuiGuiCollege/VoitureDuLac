@@ -423,13 +423,13 @@ function AfficherFactureSeule($bd, $id){
                     </div>
                     <div>
                         <p>Montant de la facture :</p>
-                        <input type='number' name='montant' id='montant' value='".$ligne['montant']."' readonly>
+                        <input type='number' name='montant' id='montant' value='".number_format($ligne['montant'],2)."' readonly>
                     </div>
                 </fieldset>
                 
                 <fieldset>
                     <input type='submit' value='Sauvegarder' class='btn btn-primary'>
-                    <input type='button' value='Calculer facture' class='btn btn-primary'>
+                    <input type='button' value='Calculer facture' onclick='calculerFacture($id);' class='btn btn-primary'>
                     <input type='button' value='Envoyer facture' class='btn btn-primary'>
                     <input type='reset' value='Annuler' onclick='window.location.assign(\"gestionFacture.php\");' class='btn btn-primary'>
                     <p id='erreur'></p>
