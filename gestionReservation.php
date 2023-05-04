@@ -17,9 +17,9 @@ if(isset($_GET['action'])){
             $reserv->supprimerReservationBD($bd);
         }
     }
-    // VERIFICATION ACTION MODIFER
+    // VERIFICATION ACTION MODIFIER
     else if($_GET['action'] == 'modifier'){
-        for ($i = 0; $i < GetMaxIdReservation($bd); $i++) {
+        for ($i = 0; $i <= GetMaxIdReservation($bd); $i++) {
             if(isset($_POST['statut'.$i])){
                 $reserv = new Reservation($i, $_POST['statut'.$i]);
                 $reserv->modifierStatusReservationBD($bd);

@@ -49,7 +49,7 @@ function CompterVoitures($bd){
 }
 // Fonction qui permet de compter le nombre de réservations.
 function CompterReservation($bd){
-    $reqCount = $bd->prepare("SELECT COUNT(idReservation) FROM reservation;");
+    $reqCount = $bd->prepare("SELECT COUNT(idReservation) FROM reservation WHERE dateFin >= current_date();");
     $reqCount->execute();
     return $reqCount->fetch()[0];
 }
