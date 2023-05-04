@@ -48,8 +48,14 @@ function CompterVoitures($bd){
     return $reqCount->fetch()[0];
 }
 // Fonction qui permet de compter le nombre de réservations.
-function CompterReservation($bd){
+function CompterReservations($bd){
     $reqCount = $bd->prepare("SELECT COUNT(idReservation) FROM reservation WHERE dateFin >= current_date();");
+    $reqCount->execute();
+    return $reqCount->fetch()[0];
+}
+// Fonction qui permet de compter le nombre de factures.
+function CompterFactures($bd){
+    $reqCount = $bd->prepare("SELECT COUNT(idFacture) FROM facture;");
     $reqCount->execute();
     return $reqCount->fetch()[0];
 }
@@ -254,7 +260,7 @@ function AfficherSupprimerVoiture($bd){
         </form>");
 }
 // Fonction qui permet d'afficher le menu de gestion des réservations.
-function AfficherReservation($bd){
+function AfficherReservations($bd){
     $req = $bd->prepare("SELECT * FROM reservation WHERE dateFin >= current_date();");
     $req->execute();
     $reservs = $req->fetchAll();
@@ -315,5 +321,45 @@ function GetMaxIdReservation($bd){
     $req = $bd->prepare("SELECT MAX(idReservation) FROM reservation;");
     $req->execute();
     return $req->fetchAll()[0]['MAX(idReservation)'];
+}
+// Fonction qui permet d'afficher le menu de gestion des factures.
+function AfficherFactures($bd)
+{
+    $requete = $bd->prepare("SELECT idFacture, nom, prenom, nomVoiture, dateDebut, dateFin, assurance, kmDebut, kmFin FROM facture, client, voiture WHERE noClient=idClient AND noVoiture=idVoiture");
+    $requete->execute();
+    print(" <table class='table table-bordered' >
+                <tr>
+                    <th></th>
+                    <th> Nom client</th>
+                    <th> Voiture</th>
+                    <th> Date début</th>
+                    <th> Date fin</th>
+                    <th> Km départ</th>
+                    <th> Km arrivée</th>
+                    <th> Assurance</th>
+                    <th> &nbsp</th>
+                </tr>");
+
+    while ($ligne = $requete->fetch()) {
+        if ($ligne['assurance'] == 0)
+            $ass = "non";
+        else
+            $ass = "oui";
+
+        $img = "images/supprimer.png";
+        print("<tr>
+                   <td> <a href=''><img src='$img' alt='imgSupprimer' height='40' width='30'></a></td>
+                   <td> $ligne[prenom] $ligne[nom]</td>
+                   <td> $ligne[nomVoiture]</td>
+                   <td> $ligne[dateDebut]</td>
+                   <td> $ligne[dateFin]</td>
+                   <td> $ligne[kmDebut]</td>
+                   <td> $ligne[kmFin]</td>
+                   <td> $ass</td>
+                   <td> <a href=''>Mettre à jour</a></td>
+               </tr>");
+    }
+
+    print("</table>");
 }
 ?>

@@ -80,6 +80,10 @@ CREATE TABLE facture
     PRIMARY KEY (idFacture)
 );
 
+INSERT INTO facture (noClient, noVoiture, dateDebut, dateFin, kmDebut) VALUES (2,3,'2023-04-17', '2023-04-27',18588);
+INSERT INTO facture (noClient, noVoiture, dateDebut, dateFin, kmDebut) VALUES (1,1,'2023-05-17', '2023-05-22',142365);
+
+
 #DROP TABLE usager;
 CREATE TABLE usager
 (

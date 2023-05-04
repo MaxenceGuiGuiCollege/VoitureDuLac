@@ -51,11 +51,11 @@ include("inclus/enteteAdmin.inc.php");
     <h2 class="mb-4">Gestion des Réservations</h2>
 <?php
 // VERIFICATION NOMBRE DE RESERVATIONS
-if(CompterReservation($bd) == 0){
+if(CompterReservations($bd) == 0){
     print("Aucune Réservations...");
 }
 else{
-    AfficherReservation($bd);
+    AfficherReservations($bd);
 
 }
 include("inclus/piedPage.inc.php");
