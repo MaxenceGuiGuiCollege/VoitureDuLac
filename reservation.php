@@ -38,8 +38,8 @@ include("inclus/entete.inc.php");
         <fieldset>
             <p><?php echo $json['booking_date_start'] ?></p>
             <p><?php echo $json['booking_date_end'] ?></p>
-            <input type="date" name="dateDebut" id="dateDebut" required>
-            <input type="date" name="dateFin" id="dateFin"" required>
+            <input type="date" name="dateDebut" id="dateDebutReserv" required>
+            <input type="date" name="dateFin" id="dateFinReserv"" required>
         </fieldset>
         <fieldset>
             <p><?php echo $json['booking_email'] ?></p>

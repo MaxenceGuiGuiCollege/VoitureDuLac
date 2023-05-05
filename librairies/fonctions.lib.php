@@ -390,11 +390,6 @@ function AfficherFactureSeule($bd, $id){
     else
         $ass = "checked";
 
-    if ($ligne['montant'] != null)
-        $mont = number_format($ligne['montant'],2);
-    else
-        $mont = $ligne['montant'];
-
     print("<h2 class='mb-4'>Gestion de la Factures : ".$id."</h2>");
     print("<form action='gestionFacture.php?action=modifier&num=$id' name='formModifierFacture' method='post'>
                 <div>
@@ -428,7 +423,7 @@ function AfficherFactureSeule($bd, $id){
                     </div>
                     <div>
                         <p>Montant de la facture :</p>
-                        <input type='number' name='montant' id='montant' value='".$mont."' readonly>
+                        <input type='number' name='montant' id='montant' value='".$ligne['montant']."' readonly>
                     </div>
                 </fieldset>
                 

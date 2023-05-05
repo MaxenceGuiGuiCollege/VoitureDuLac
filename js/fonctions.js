@@ -30,8 +30,8 @@ function getDateTomorrow(){
     return dateTodayWithoutDay + zeroD + dT;
 }
 
-const inputDateToday = document.getElementById("dateDebut");
-const inputDateTomorrow = document.getElementById("dateFin");
+const inputDateToday = document.getElementById("dateDebutReserv");
+const inputDateTomorrow = document.getElementById("dateFinReserv");
 
 if(inputDateToday != null){
     inputDateToday.value = getDateToday();
