@@ -1,4 +1,14 @@
 
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    min-height: 100vh;
+}
+
 table,
 table th,
 table td{
@@ -175,10 +185,11 @@ form[name=formModifierFacture] fieldset:nth-of-type(2) div{
     grid-template-columns: auto auto;
     column-gap: 1em;
 }
+form[name=formModifierFacture] fieldset:nth-of-type(3) div *{
+    display: inline;
+}
 form[name=formModifierFacture] fieldset:nth-of-type(3) div:last-of-type{
-    display: grid;
-    grid-template-columns: max-content auto;
-    column-gap: 1em;
+    width: auto;
 }
 form[name=formModifierFacture] fieldset:last-of-type{
     padding-top: 1em;
